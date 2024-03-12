@@ -1,0 +1,23 @@
+{
+    "include": ["./src/**/*","./server/**/*"],
+    "exclude": ["./node_modules/*", "./dist/**/*"],
+    "compilerOptions": {
+        "outDir": "./dist",
+        "target": "es6",
+        "module": "commonjs",
+        "strict": false,
+        "checkJs": false,
+        "allowJs": true,
+        "typeRoots": [
+          "./node_modules/@umbrik/webtutor-types/lib",
+          "./node_modules/@umbrik/webtutor-types/lib/xml"
+        ],
+        "paths": {
+            "@App/*": ["./src/App/*"],
+            "@components/*": ["./src/App/components/*"],
+            "@hooks/*": ["./src/App/hooks/*"],
+            "@context/*": ["./src/App/context/*"],
+            "@services/*": ["./src/services/*"]
+        }
+      }
+}

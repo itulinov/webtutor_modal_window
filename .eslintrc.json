@@ -1,0 +1,54 @@
+{
+    "env": {
+        "browser": true,
+        "es2021": true,
+        "node": true,
+        "webtutor/webtutor": true
+    },
+    "globals": {
+        "ERROR": true,
+        "MESSAGE": true,
+        "RESULT": true
+    },
+    "extends": ["eslint:recommended", "plugin:react/recommended", "plugin:jsdoc/recommended", "prettier"],
+    "plugins": ["eslint-plugin-webtutor", "jsdoc"],
+    "parserOptions": {
+        "ecmaVersion": "latest",
+        "sourceType": "module"
+    },
+    "rules": {
+        "no-var": "off",
+        "comma-spacing": [
+            "error",
+            {
+                "before": false,
+                "after": true
+            }
+        ],
+        "no-trailing-spaces": "error",
+        "jsdoc/no-undefined-types": "off",
+        "jsdoc/check-alignment": "error",
+        "jsdoc/check-indentation": "error",
+        "jsdoc/check-param-names": "error",
+        "jsdoc/check-property-names": "error",
+        "jsdoc/check-types": "error",
+        "jsdoc/no-blank-block-descriptions": "error",
+        "jsdoc/no-multi-asterisks": "error",
+        "jsdoc/require-asterisk-prefix": "error",
+        "jsdoc/require-description": "error",
+        "jsdoc/require-description-complete-sentence": "error",
+        "jsdoc/require-hyphen-before-param-description": "error",
+        "jsdoc/require-param": "error",
+        "jsdoc/require-param-description": "error",
+        "jsdoc/require-param-name": "error",
+        "jsdoc/require-param-type": "error"
+    },
+    "overrides": [
+        {
+            "files": ["./server/*.js"],
+            "rules": {
+                "jsdoc/require-jsdoc": "error"
+            }
+        }
+    ]
+}
