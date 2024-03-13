@@ -3,6 +3,9 @@ const fs = require('node:fs');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const projectConfig = require('./config');
+const ModuleFederationPlugin = require(
+    "webpack/lib/container/ModuleFederationPlugin"
+)
 
 const serverSideInitialCode = fs.readFileSync('./serverSideInitialCode.js', 'utf8');
 const entryPoint = `
@@ -104,6 +107,12 @@ module.exports = {
             serverSideTemplateIdCode: '<%=curOverrideWebTemplateID%>',
             serverScript: `${serverSideInitialCode && serverSideInitialCode.length > 0 ? `<%${codes}%>` : ''}`,
             inject: false,
+        }),
+        new ModuleFederationPlugin({
+            name: "mw",
+            remotes: {
+                mwLib: "mwLib@https://localhost:3003/remoteEntry.js",
+            }
         }),
     ],
     externals: {
