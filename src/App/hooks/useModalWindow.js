@@ -1,17 +1,23 @@
-import {useEffect} from "react"
+import {useState, useEffect} from "react"
 import usePortal from "./usePortal"
 
 
 export default () => {
     const [portalParams] = usePortal()
 
+    const getData = (param, fn = () => {}) => {
+        import ("@services/modal_window_lib.js").catch((err) => {
+            return import("webtutor_modal_window_lib")
+        }).then(({default: run}) => {
+            run(param).then((data) => {
+                fn(data)
+            })
+        })
+    }
 
-    import ("@services/modal_window_lib.js").catch((err) => {
-        return import("webtutor_modal_window_lib")
-    }).then(({default: getData}) => {
-        //getData(param).then(data => console.log("data", data))
-    })
 
-
-    return [portalParams]
+    return [{
+        ...portalParams,
+        getData,
+    }]
 }

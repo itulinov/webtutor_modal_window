@@ -10,22 +10,17 @@ export default () => {
         }
 
         window.document.beeline.ModalWindow = (param = {}) => {
-            setShow(false)
+            const self = {param}
 
-            const self = { param }
-                setParam({
-                    catalog: "collaborators",
-                    fields: "id,fullname,code",
-                    find: "id,fullname,code",
-                    value: "Тулинова",
-                    ids: "",
-                    'user-where': "1=1",
-                    ssql: "",
-                    connection: "",
-                })
+            self.show = () => {
+                setShow(true)
+                setParam(param)
+            }
 
-            self.show = () => setShow(true)
-            self.close = () => setShow(false)
+            self.close = () => {
+                setShow(false)
+                setParam(null)
+            }
 
             return self
         }
@@ -36,5 +31,6 @@ export default () => {
     return [{
         param,
         show,
+        close: () => setShow(false),
     }]
 }

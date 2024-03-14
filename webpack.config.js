@@ -83,10 +83,9 @@ module.exports = {
         extensions: ['.js', '.jsx', '.json', '.css', '.scss'],
         alias: {
             '@App': path.resolve(__dirname,             './src/App'),
-            '@components': path.resolve(__dirname,      './src/App/components'),
             '@hooks': path.resolve(__dirname,           './src/App/hooks'),
-            '@context': path.resolve(__dirname,         './src/App/context'),
             '@services': path.resolve(__dirname,        './src/services'),
+            '@assets': path.resolve(__dirname,        './src/assets'),
         },
     },
 };
