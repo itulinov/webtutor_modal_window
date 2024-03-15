@@ -21,7 +21,6 @@ function ModalWindow({params}) {
                 <div className={Classes.padding}>
                     <Header />
                     <Search />
-                    <div>find</div>
                     <div>
                         <div>records</div>
                         <div>records selected</div>
