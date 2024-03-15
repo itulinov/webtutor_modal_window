@@ -1,10 +1,10 @@
 import React from "react"
-import useModalWindow from "@hooks/useModalWindow"
+import useApp from "@hooks/useApp"
 import ModalWindow from "./ModalWindow"
 
 
 function App({settings}) {
-    const [modal] = useModalWindow()
+    const [modal] = useApp()
     if (!modal) {
         return <div>modal window is not ready</div>
     }

@@ -5,22 +5,19 @@ import Close from "./Close"
 import Search from "./Search"
 import SearchRecords from "./SearchRecords"
 
+import useModalWindow from "./useModalWindow"
 import Classes from "./ModalWindow.module.css"
 
 
 function ModalWindow({params}) {
-    const {
-        close,
-        getData,
-        param,
-        show,
-    } = params
+    const {close, show, param} = params
+    const [{records, loading}, getRecords] = useModalWindow(params)
 
     if (!show) {
         return null
     }
 
-    console.log(param)
+    console.log(loading, records)
     return (
         <div>
             <div className={Classes.background}></div>
@@ -28,7 +25,7 @@ function ModalWindow({params}) {
                 <Close close={close} />
                 <div className={Classes.padding}>
                     <Header />
-                    <Search />
+                    <Search getRecords={getRecords}/>
                     <SearchRecords fields={param.fields}/>
                     <div>records selected</div>
                     <div>action</div>
