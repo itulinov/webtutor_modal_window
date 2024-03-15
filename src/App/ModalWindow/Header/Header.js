@@ -1,11 +1,12 @@
 import React from "react"
+import getHeader from "./getHeader"
 import Classes from "./Header.module.css"
 
-function Header() {
+function Header({text, type}) {
+    const name = getHeader(text, type)
+
     return (
-        <div>
-             Header
-        </div>
+        <div className={Classes.header}>{name}</div>
     )
 }
 

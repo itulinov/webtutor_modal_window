@@ -2,6 +2,7 @@ import React from "react"
 
 import Header from "./Header"
 import Close from "./Close"
+import Search from "./Search"
 
 import Classes from "./ModalWindow.module.css"
 
@@ -11,6 +12,7 @@ function ModalWindow({params}) {
         return null
     }
 
+    console.log(params)
     return (
         <div>
             <div className={Classes.background}></div>
@@ -18,6 +20,7 @@ function ModalWindow({params}) {
                 <Close close={params.close} />
                 <div className={Classes.padding}>
                     <Header />
+                    <Search />
                     <div>find</div>
                     <div>
                         <div>records</div>
