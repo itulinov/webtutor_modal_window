@@ -14,15 +14,17 @@ function App({settings}) {
 
     const show = () => {
         const mw = new window.document.beeline.ModalWindow({
-            catalog: "collaborators",
-            fields: "id,fullname,code",
-            find: "id,fullname,code",
-            value: "Тулинова",
-            ids: "",
-            'user-where': "1=1",
-            ssql: "",
-            connection: "",
+            catalog: 'collaborators',
+            fields: {
+                code: ['тн', '15%'],
+                fullname: ['ФИО', '60%'],
+            },
+            find: ['id', 'fullname', 'code'],
+            callback: function (data) {
+                console.log(data)
+            }
         })
+
         mw.show()
     }
 
@@ -37,6 +39,7 @@ function App({settings}) {
             ssql: "",
             connection: "",
         })
+
         mw.show()
     }
 

@@ -4,7 +4,7 @@
     border-radius: .188rem;
     display: flex;
     flex-wrap: nowrap;
-    border: 2px solid #e8e8ee;
+    border: .125rem solid #e8e8ee;
 }
 
 .input > input {

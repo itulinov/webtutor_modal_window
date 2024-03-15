@@ -3,28 +3,34 @@ import React from "react"
 import Header from "./Header"
 import Close from "./Close"
 import Search from "./Search"
+import SearchRecords from "./SearchRecords"
 
 import Classes from "./ModalWindow.module.css"
 
 
 function ModalWindow({params}) {
-    if (!params.show) {
+    const {
+        close,
+        getData,
+        param,
+        show,
+    } = params
+
+    if (!show) {
         return null
     }
 
-    console.log(params)
+    console.log(param)
     return (
         <div>
             <div className={Classes.background}></div>
             <div className={Classes.modal_window}>
-                <Close close={params.close} />
+                <Close close={close} />
                 <div className={Classes.padding}>
                     <Header />
                     <Search />
-                    <div>
-                        <div>records</div>
-                        <div>records selected</div>
-                    </div>
+                    <SearchRecords fields={param.fields}/>
+                    <div>records selected</div>
                     <div>action</div>
                 </div>
             </div>
