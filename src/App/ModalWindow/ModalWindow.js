@@ -5,6 +5,7 @@ import Close from "./Close"
 import Search from "./Search"
 import SearchRecords from "./SearchRecords"
 import SelectedRecords from "./SelectedRecords"
+import Action from "./Action"
 
 import useModalWindow from "./useModalWindow"
 import Classes from "./ModalWindow.module.css"
@@ -18,7 +19,7 @@ function ModalWindow({params}) {
         return null
     }
 
-    console.log(loading)
+    console.log(params)
     return (
         <div>
             <div className={Classes.background}></div>
@@ -29,7 +30,7 @@ function ModalWindow({params}) {
                     <Search getRecords={getRecords} loading={loading}/>
                     <SearchRecords fields={param.fields} records={records}/>
                     <SelectedRecords fields={param.fields} records={selected}/>
-                    <div>action</div>
+                    <Action close={close} apply={() => param.callback(selected)} />
                 </div>
             </div>
         </div>

@@ -9,8 +9,8 @@ function Search({getRecords, loading=false, text=""}) {
     const information = loading ? <Spinner /> : text
 
     return (
-        <div className={Classes.search} onClick={getRecords}>
-            <Input />
+        <div className={Classes.search}>
+            <Input getRecords={getRecords}/>
             <div>
                 {information}
             </div>

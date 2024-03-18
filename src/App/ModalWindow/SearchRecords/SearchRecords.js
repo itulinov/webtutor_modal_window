@@ -13,12 +13,16 @@ function SearchRecords({fields, records}) {
 
     return (
         <div className={Classes.search_records}>
-            <Record fields={fields} style={style}/>
-            {records && records.map((record, i) => {
-                return (
-                    <Record key={i} fields={fields} data={record}/>
-                )
-            })}
+            <div className={Classes.header}>
+                <Record fields={fields} style={style}/>
+            </div>
+            <div className={Classes.records}>
+                {records && records.map((record, i) => {
+                    return (
+                        <Record key={i} fields={fields} data={record}/>
+                    )
+                })}
+            </div>
         </div>
     )
 }

@@ -1,0 +1,19 @@
+.action {
+    margin: .5rem 0;
+    text-align: right;
+}
+
+.action > button {
+    margin-left: .5rem;
+    border: 1px solid #727a8d;
+    border-radius: .125rem;
+    background-color: #fff;
+    color: #727a8d;
+    padding: .313rem .626rem;
+    min-width: 8rem;
+}
+
+.action > button:hover {
+    background-color: #727a8d;
+    color: #fff;
+}
