@@ -1,12 +1,19 @@
 import React from "react"
 import Input from "./Input"
+import Spinner from "./Spinner"
+
 import Classes from "./Search.module.css"
 
-function Search({getRecords, text = "тестовое сообщение"}) {
+
+function Search({getRecords, loading=false, text=""}) {
+    const information = loading ? <Spinner /> : text
+
     return (
         <div className={Classes.search} onClick={getRecords}>
             <Input />
-            <div>{text}</div>
+            <div>
+                {information}
+            </div>
         </div>
     )
 }

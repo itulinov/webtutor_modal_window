@@ -29,5 +29,6 @@ export default (params) => {
     return [{
         records,
         loading,
+        selected: [],
     }, getRecords]
 }

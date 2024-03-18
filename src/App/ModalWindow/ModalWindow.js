@@ -4,6 +4,7 @@ import Header from "./Header"
 import Close from "./Close"
 import Search from "./Search"
 import SearchRecords from "./SearchRecords"
+import SelectedRecords from "./SelectedRecords"
 
 import useModalWindow from "./useModalWindow"
 import Classes from "./ModalWindow.module.css"
@@ -11,7 +12,7 @@ import Classes from "./ModalWindow.module.css"
 
 function ModalWindow({params}) {
     const {close, show, param} = params
-    const [{records, loading}, getRecords] = useModalWindow(params)
+    const [{records, loading, selected}, getRecords] = useModalWindow(params)
 
     if (!show) {
         return null
@@ -25,9 +26,9 @@ function ModalWindow({params}) {
                 <Close close={close} />
                 <div className={Classes.padding}>
                     <Header />
-                    <Search getRecords={getRecords}/>
+                    <Search getRecords={getRecords} loading={loading}/>
                     <SearchRecords fields={param.fields} records={records}/>
-                    <div>records selected</div>
+                    <SelectedRecords fields={param.fields} records={selected}/>
                     <div>action</div>
                 </div>
             </div>
