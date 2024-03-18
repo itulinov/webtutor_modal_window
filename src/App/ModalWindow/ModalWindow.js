@@ -17,7 +17,7 @@ function ModalWindow({params}) {
         return null
     }
 
-    console.log(loading, records)
+    console.log(loading)
     return (
         <div>
             <div className={Classes.background}></div>
@@ -26,7 +26,7 @@ function ModalWindow({params}) {
                 <div className={Classes.padding}>
                     <Header />
                     <Search getRecords={getRecords}/>
-                    <SearchRecords fields={param.fields}/>
+                    <SearchRecords fields={param.fields} records={records}/>
                     <div>records selected</div>
                     <div>action</div>
                 </div>
