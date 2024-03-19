@@ -4,6 +4,10 @@
     text-align: right;
 }
 
+.close:hover {
+    opacity: 1;
+}
+
 .close > img {
     cursor: pointer;
 }

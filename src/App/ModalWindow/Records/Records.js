@@ -1,19 +1,18 @@
 import React from "react"
 import Record from "@App/ModalWindow/Record"
-import Classes from "./SearchRecords.module.css"
+import Classes from "./Records.module.css"
 
-function SearchRecords({fields, records, select}) {
-    const style = {
-        cursor: 'default',
-        background: 'none'
-    }
+function SearchRecords({fields, records, select, rows=7}) {
+    const styleForHeader = {cursor: 'default', background: 'none'}
+    const styleRows = {height: (rows * 2.43).toString() + 'rem'}
+
 
     return (
         <div className={Classes.search_records}>
             <div className={Classes.header}>
-                <Record fields={fields} style={style}/>
+                <Record fields={fields} style={styleForHeader}/>
             </div>
-            <div className={Classes.records}>
+            <div className={Classes.records} style={styleRows}>
                 {records && records.map((record, i) => {
                     return (
                         <Record key={i}

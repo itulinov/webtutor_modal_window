@@ -20,4 +20,9 @@
     align-items: center;
     padding-right: .4rem;
     cursor: pointer;
+    opacity: .7;
+}
+
+.btn:hover {
+    opacity: 1;
 }

@@ -3,8 +3,7 @@ import React from "react"
 import Header from "./Header"
 import Close from "./Close"
 import Search from "./Search"
-import SearchRecords from "./SearchRecords"
-import SelectedRecords from "./SelectedRecords"
+import Records from "./Records"
 import Action from "./Action"
 
 import useModalWindow from "./useModalWindow"
@@ -33,13 +32,14 @@ function ModalWindow({params}) {
                 <div className={Classes.padding}>
                     <Header />
                     <Search getRecords={getRecords} loading={loading}/>
-                    <SearchRecords fields={fields}
+                    <Records fields={fields}
                         records={records}
                         select={select}
                     />
-                    <SearchRecords fields={fields}
+                    <Records fields={fields}
                         records={selected}
                         select={exclude}
+                        rows={3}
                     />
                     <Action close={close} apply={() => callback(selected)} />
                 </div>

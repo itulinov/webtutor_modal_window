@@ -15,7 +15,7 @@ export default (params) => {
     const closeModalWindow = () => {
         // очистить прошлый результат
         setRecords(null)
-
+        setSelect([])
         // закрыть модальное окно
         close()
     }
