@@ -43,9 +43,6 @@ function App({settings}) {
         mw.show()
     }
 
-    if (!modal.show) {
-        setTimeout(() => show(), 100)
-    }
 
     return (
         <div>
