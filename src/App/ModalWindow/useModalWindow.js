@@ -22,6 +22,22 @@ export default (params) => {
 
 
     /**
+     * Исключение элементов
+     */
+    const excludeRecord = (record) => {
+        const newSelected = selected.reduce((acc, item) => {
+            if (item.id === record.id) {
+                return acc
+            }
+
+            return [...acc, item]
+        }, [])
+
+        setSelect(newSelected)
+    }
+
+
+    /**
      * Выбор элементов
      * @param {object} record - одна запись списка элементов
      */
@@ -65,5 +81,11 @@ export default (params) => {
         records,
         selected,
         fields: param ? param.fields : {},
-    }, getRecords, closeModalWindow, param && param.callback, selectRecord]
+    },
+        getRecords,
+        closeModalWindow,
+        param && param.callback,
+        selectRecord,
+        excludeRecord
+    ]
 }

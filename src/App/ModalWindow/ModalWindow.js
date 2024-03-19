@@ -18,7 +18,7 @@ function ModalWindow({params}) {
         fields,
         records,
         selected,
-    }, getRecords, close, callback, select] = useModalWindow(params)
+    }, getRecords, close, callback, select, exclude] = useModalWindow(params)
 
 
     if (!show) {
@@ -37,7 +37,10 @@ function ModalWindow({params}) {
                         records={records}
                         select={select}
                     />
-                    <SelectedRecords fields={fields} records={selected}/>
+                    <SearchRecords fields={fields}
+                        records={selected}
+                        select={exclude}
+                    />
                     <Action close={close} apply={() => callback(selected)} />
                 </div>
             </div>
