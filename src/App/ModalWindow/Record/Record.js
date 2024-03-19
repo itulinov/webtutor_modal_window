@@ -3,7 +3,7 @@ import getRecords from "./getRecords"
 import Classes from "./Record.module.css"
 
 
-function Record({fields, data, style={}}) {
+function Record({fields, data, style={}, select}) {
     if (!fields) {
         console.error("Поле fields является обязателеным!")
         return null
@@ -11,7 +11,7 @@ function Record({fields, data, style={}}) {
 
 
     return (
-        <div className={Classes.record} style={style}>
+        <div className={Classes.record} style={style} onClick={() => select(data)}>
             {Object.keys(fields).map((fieldName, i) => {
                 const [columnName, width] = fields[fieldName]
                 const field = data ? data[fieldName] : columnName

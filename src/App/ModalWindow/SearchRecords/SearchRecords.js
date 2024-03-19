@@ -2,13 +2,10 @@ import React from "react"
 import Record from "@App/ModalWindow/Record"
 import Classes from "./SearchRecords.module.css"
 
-function SearchRecords({fields, records}) {
-    let style = {}
-    if (true) {
-        style = {
-            cursor: 'default',
-            background: 'none'
-        }
+function SearchRecords({fields, records, select}) {
+    const style = {
+        cursor: 'default',
+        background: 'none'
     }
 
     return (
@@ -19,7 +16,11 @@ function SearchRecords({fields, records}) {
             <div className={Classes.records}>
                 {records && records.map((record, i) => {
                     return (
-                        <Record key={i} fields={fields} data={record}/>
+                        <Record key={i}
+                            fields={fields}
+                            data={record}
+                            select={select}
+                        />
                     )
                 })}
             </div>

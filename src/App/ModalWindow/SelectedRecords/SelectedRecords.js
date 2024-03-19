@@ -3,12 +3,9 @@ import Record from "@App/ModalWindow/Record"
 import Classes from "./SelectedRecords.module.css"
 
 function SelectedRecords({fields, records}) {
-    let style = {}
-    if (true) {
-        style = {
-            cursor: 'default',
-            background: 'none'
-        }
+    const style = {
+        cursor: 'default',
+        background: 'none'
     }
 
     return (

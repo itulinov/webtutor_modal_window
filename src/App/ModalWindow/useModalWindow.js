@@ -8,6 +8,7 @@ export default (params) => {
         close,
     } = params
 
+    const [selected, setSelect] = useState([])
     const [records, setRecords] = useState(null)
     const [loading, setLoading] = useState(false)
 
@@ -20,6 +21,27 @@ export default (params) => {
     }
 
 
+    /**
+     * Выбор элементов
+     * @param {object} record - одна запись списка элементов
+     */
+    const selectRecord = (record) => {
+        const found = selected.find((selectRec) => {
+            return selectRec.id === record.id
+        })
+
+        if (found) {
+            setSelect([...selected])
+            return
+        }
+
+        setSelect([record, ...selected])
+    }
+
+
+    /**
+     * TODO: отправка запроса с конвертированием данных
+     */
     const getRecords = () => {
         setLoading(true)
         getData({
@@ -41,8 +63,7 @@ export default (params) => {
         show,
         loading,
         records,
-        selected: records ? [...records] : [],
+        selected,
         fields: param ? param.fields : {},
-        callback: param ? param.callback : () => {},
-    }, getRecords, closeModalWindow]
+    }, getRecords, closeModalWindow, param && param.callback, selectRecord]
 }
