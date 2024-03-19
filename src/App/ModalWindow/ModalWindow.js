@@ -13,6 +13,7 @@ import Classes from "./ModalWindow.module.css"
 function ModalWindow({params}) {
     const [{
         show,
+        info,
         loading,
         fields,
         records,
@@ -31,7 +32,7 @@ function ModalWindow({params}) {
                 <Close close={close} />
                 <div className={Classes.padding}>
                     <Header />
-                    <Search getRecords={getRecords} loading={loading}/>
+                    <Search getRecords={getRecords} loading={loading} info={info}/>
                     <Records fields={fields}
                         records={records}
                         select={select}

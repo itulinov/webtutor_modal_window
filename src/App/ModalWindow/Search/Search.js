@@ -5,8 +5,8 @@ import Spinner from "./Spinner"
 import Classes from "./Search.module.css"
 
 
-function Search({getRecords, loading=false, text=""}) {
-    const information = loading ? <Spinner /> : text
+function Search({getRecords, loading=false, info=""}) {
+    const information = loading ? <Spinner /> : info
 
     return (
         <div className={Classes.search}>

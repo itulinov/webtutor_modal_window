@@ -8,6 +8,12 @@ export default (params) => {
         close,
     } = params
 
+    const information = {
+        begin: "Воспользуйтесь поиском.",
+        help: "Для добавления/удаления необходимо кликнуть на запись.",
+    }
+
+    const [info, setInfo] = useState(information.begin)
     const [selected, setSelect] = useState([])
     const [records, setRecords] = useState(null)
     const [loading, setLoading] = useState(false)
@@ -16,6 +22,7 @@ export default (params) => {
         // очистить прошлый результат
         setRecords(null)
         setSelect([])
+
         // закрыть модальное окно
         close()
     }
@@ -33,6 +40,7 @@ export default (params) => {
             return [...acc, item]
         }, [])
 
+        setInfo(information.help)
         setSelect(newSelected)
     }
 
@@ -54,11 +62,34 @@ export default (params) => {
         setSelect([record, ...selected])
     }
 
+    /**
+     * Получить поля для поиска
+     * @param {object} fields
+     * @return {string}
+     */
+    const getFields = (fields) => {
+        const arrFields = Object.keys(fields).map(field => {
+            return field
+        })
+
+        return ['id', ...arrFields].join(",")
+    }
+
 
     /**
      * TODO: отправка запроса с конвертированием данных
      */
     const getRecords = () => {
+        const fields = getFields(param.fields)
+        var paramRequest = {
+            catalog: param.catalog,
+            fields,
+            find: param.find.join(","),
+        }
+
+        console.log(param)
+        console.log(paramRequest)
+
         setLoading(true)
         getData({
             catalog: "collaborators",
@@ -72,11 +103,14 @@ export default (params) => {
         }, (data) => {
             setLoading(false)
             setRecords(data)
+
+            setInfo(information.help)
         })
     }
 
     return [{
         show,
+        info,
         loading,
         records,
         selected,
