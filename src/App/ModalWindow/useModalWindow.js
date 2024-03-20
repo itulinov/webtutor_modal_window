@@ -1,4 +1,7 @@
 import React, {useState} from "react"
+import getRequestParams from "./lib/getRequestParams"
+import { START, HELP } from "./lib/consts"
+
 
 export default (params) => {
     const {
@@ -8,12 +11,7 @@ export default (params) => {
         close,
     } = params
 
-    const information = {
-        begin: "Воспользуйтесь поиском.",
-        help: "Для добавления/удаления необходимо кликнуть на запись.",
-    }
-
-    const [info, setInfo] = useState(information.begin)
+    const [info, setInfo] = useState(START)
     const [selected, setSelect] = useState([])
     const [records, setRecords] = useState(null)
     const [loading, setLoading] = useState(false)
@@ -40,7 +38,7 @@ export default (params) => {
             return [...acc, item]
         }, [])
 
-        setInfo(information.help)
+        setInfo(HELP)
         setSelect(newSelected)
     }
 
@@ -62,51 +60,23 @@ export default (params) => {
         setSelect([record, ...selected])
     }
 
-    /**
-     * Получить поля для поиска
-     * @param {object} fields
-     * @return {string}
-     */
-    const getFields = (fields) => {
-        const arrFields = Object.keys(fields).map(field => {
-            return field
-        })
-
-        return ['id', ...arrFields].join(",")
-    }
-
 
     /**
-     * TODO: отправка запроса с конвертированием данных
+     * Получение записей с сервера
+     * @param {string} value - строка поиска
      */
-    const getRecords = () => {
-        const fields = getFields(param.fields)
-        var paramRequest = {
-            catalog: param.catalog,
-            fields,
-            find: param.find.join(","),
-        }
-
-        console.log(param)
-        console.log(paramRequest)
+    const getRecords = (value) => {
+        var paramsRequest = getRequestParams(param, value)
 
         setLoading(true)
-        getData({
-            catalog: "collaborators",
-            fields: "id,fullname,code",
-            find: "id,fullname,code",
-            value: "Тулинов",
-            ids: "",
-            'user-where': "1=1",
-            ssql: "",
-            connection: "",
-        }, (data) => {
+        getData(paramsRequest, (data) => {
             setLoading(false)
             setRecords(data)
 
-            setInfo(information.help)
+            setInfo(HELP)
         })
     }
+
 
     return [{
         show,

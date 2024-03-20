@@ -16,10 +16,10 @@ function ModalWindow({params}) {
         info,
         loading,
         fields,
+        value,
         records,
         selected,
     }, getRecords, close, callback, select, exclude] = useModalWindow(params)
-
 
     if (!show) {
         return null
@@ -32,7 +32,10 @@ function ModalWindow({params}) {
                 <Close close={close} />
                 <div className={Classes.padding}>
                     <Header />
-                    <Search getRecords={getRecords} loading={loading} info={info}/>
+                    <Search getRecords={getRecords}
+                        loading={loading}
+                        info={info}
+                    />
                     <Records fields={fields}
                         records={records}
                         select={select}
