@@ -1,6 +1,6 @@
 import React, {useState} from "react"
 import getRequestParams from "./lib/getRequestParams"
-import { START, HELP } from "./lib/consts"
+import { START, HELP, VALUE_IS_LITTLE } from "./lib/consts"
 
 
 export default (params) => {
@@ -66,9 +66,14 @@ export default (params) => {
      * @param {string} value - строка поиска
      */
     const getRecords = (value) => {
-        var paramsRequest = getRequestParams(param, value)
+        if (value.length < 3) {
+            setInfo(VALUE_IS_LITTLE)
+            return
+        }
 
+        var paramsRequest = getRequestParams(param, value)
         setLoading(true)
+
         getData(paramsRequest, (data) => {
             setLoading(false)
             setRecords(data)
