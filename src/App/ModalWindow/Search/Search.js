@@ -11,7 +11,7 @@ function Search({getRecords, loading=false, info=""}) {
     return (
         <div className={Classes.search}>
             <Input getRecords={getRecords}/>
-            <div>
+            <div className={Classes.information}>
                 {information}
             </div>
         </div>

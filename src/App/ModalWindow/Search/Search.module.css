@@ -10,4 +10,10 @@
     .search {
         display: block;
     }
+
+    .information {
+        margin-top: .2rem;
+        min-height: 1.9rem;
+        text-align: center;
+    }
 }
