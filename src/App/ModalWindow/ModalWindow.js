@@ -25,13 +25,14 @@ function ModalWindow({params}) {
         return null
     }
 
+
     return (
         <div>
             <div className={Classes.background}></div>
             <div className={Classes.modal_window}>
                 <Close close={close} />
                 <div className={Classes.padding}>
-                    <Header />
+                    <Header type={params.param.catalog} />
                     <Search getRecords={getRecords}
                         loading={loading}
                         info={info}

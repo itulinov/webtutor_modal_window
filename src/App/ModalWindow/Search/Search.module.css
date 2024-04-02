@@ -4,3 +4,10 @@
     align-items: center;
     margin-top: .625rem;
 }
+
+
+@media (max-width: 720px) {
+    .search {
+        display: block;
+    }
+}

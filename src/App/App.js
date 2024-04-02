@@ -31,8 +31,8 @@ function App({settings}) {
     const show1 = () => {
         const mw = new window.document.beeline.ModalWindow({
             catalog: "collaborators",
-            fields: "id,fullname,code",
-            find: "id,fullname,code",
+            fields: {},
+            find: [],
             value: "Тулинов",
             ids: "",
             'user-where': "1=1",

@@ -1,5 +1,5 @@
 import React from "react"
-import Record from "@App/ModalWindow/Record"
+import Record from "./Record"
 import Classes from "./Records.module.css"
 
 function SearchRecords({fields, records, select, rows=7}) {

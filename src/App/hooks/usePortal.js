@@ -1,4 +1,6 @@
 import {useEffect, useState} from "react"
+import checkParam from "@App/ModalWindow/lib/checkParam"
+
 
 export default () => {
     const [param, setParam] = useState(null)
@@ -10,9 +12,18 @@ export default () => {
         }
 
         window.document.beeline.ModalWindow = (param = {}) => {
+            const check = checkParam(param)
+            if (!check.success) {
+                console.log(check.error)
+            }
+
             const self = {param}
 
             self.show = () => {
+                if (!check.success) {
+                    return
+                }
+
                 setShow(true)
                 setParam(param)
             }
