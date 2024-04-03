@@ -39,14 +39,16 @@ function ModalWindow({params}) {
                     />
                     <Records fields={fields}
                         records={records}
+                        selected={selected}
                         select={select}
                     />
                     <Records fields={fields}
                         records={selected}
+                        selected={selected}
                         select={exclude}
                         rows={3}
                     />
-                    <Action close={close} apply={() => callback(selected)} />
+                    <Action close={close} apply={callback} />
                 </div>
             </div>
         </div>

@@ -12,7 +12,7 @@ export default (params) => {
     } = params
 
     const [info, setInfo] = useState(START)
-    const [selected, setSelect] = useState([])
+    const [selected, setSelect] = useState({})
     const [records, setRecords] = useState(null)
     const [loading, setLoading] = useState(false)
 
@@ -30,13 +30,13 @@ export default (params) => {
      * Исключение элементов
      */
     const excludeRecord = (record) => {
-        const newSelected = selected.reduce((acc, item) => {
-            if (item.id === record.id) {
+        const newSelected = Object.values(selected).reduce((acc, sld) => {
+            if (sld.id === record.id) {
                 return acc
             }
 
-            return [...acc, item]
-        }, [])
+            return {...acc, [sld.id]: {...sld}}
+        }, {})
 
         setInfo(HELP)
         setSelect(newSelected)
@@ -48,16 +48,16 @@ export default (params) => {
      * @param {object} record - одна запись списка элементов
      */
     const selectRecord = (record) => {
-        const found = selected.find((selectRec) => {
-            return selectRec.id === record.id
+        const foundField = Object.values(selected).find((sld) => {
+            return sld.id === record.id
         })
 
-        if (found) {
-            setSelect([...selected])
+        if (foundField) {
+            setSelect({...selected})
             return
         }
 
-        setSelect([record, ...selected])
+        setSelect({...selected, [record.id]: {...record}})
     }
 
 
@@ -82,6 +82,18 @@ export default (params) => {
         })
     }
 
+    /**
+     * Вернуть выбранные значения
+     */
+    const callback = () => {
+        if (!param || typeof param.callback !== "function") {
+            return
+        }
+
+        const result = Object.values(selected)
+        param.callback(result)
+    }
+
 
     return [{
         show,
@@ -93,7 +105,7 @@ export default (params) => {
     },
         getRecords,
         closeModalWindow,
-        param && param.callback,
+        callback,
         selectRecord,
         excludeRecord
     ]

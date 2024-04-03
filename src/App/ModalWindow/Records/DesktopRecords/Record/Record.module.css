@@ -14,3 +14,7 @@
 .header {
     font-weight: 800;
 }
+
+.check_box {
+    flex: 0 0 4%;
+}

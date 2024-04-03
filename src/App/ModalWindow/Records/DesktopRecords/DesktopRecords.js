@@ -2,10 +2,14 @@ import React from "react"
 import Record from "./Record"
 import Classes from "./DesktopRecords.module.css"
 
-export default ({fields, records, select, rows=7}) => {
+export default ({fields, records, selected, select, rows=7}) => {
     const styleForHeader = {cursor: 'default', background: 'none'}
     const styleRows = {height: (rows * 2.43).toString() + 'rem'}
 
+    let data = records
+    if (data && typeof(data) === "object" && !Array.isArray(data)) {
+        data = Object.values(data)
+    }
 
     return (
         <div className={Classes.search_records}>
@@ -13,11 +17,12 @@ export default ({fields, records, select, rows=7}) => {
                 <Record fields={fields} style={styleForHeader}/>
             </div>
             <div className={Classes.records} style={styleRows}>
-                {records && records.map((record, i) => {
+                {data && data.map((record, i) => {
                     return (
-                        <Record key={i}
+                        <Record key={record.id}
                             fields={fields}
                             data={record}
+                            selected={selected}
                             select={select}
                         />
                     )
