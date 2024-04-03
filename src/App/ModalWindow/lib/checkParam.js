@@ -18,8 +18,8 @@ const isFields = (fields) => {
     }
 
     for (let field of Object.keys(fields)) {
-        // у каждого поля значение это массив из двух элементов
-        if (!Array.isArray(fields[field]) || fields[field].length !== 2) {
+        // у каждого поля значение это массив из двух\трех элементов
+        if (!Array.isArray(fields[field]) || fields[field].length < 2) {
             return false
         }
     }

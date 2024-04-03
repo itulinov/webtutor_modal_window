@@ -1,14 +1,10 @@
 import React from "react"
-import getRecords from "./getRecords"
+//import getRecords from "./getRecords"
 import Classes from "./Record.module.css"
 
 
 function Record({fields, data, style={}, select}) {
-    if (!fields) {
-        console.error("Поле fields является обязателеным!")
-        return null
-    }
-
+    console.log(fields)
 
     return (
         <div className={Classes.record} style={style} onClick={() => select(data)}>

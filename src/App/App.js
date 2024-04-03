@@ -17,7 +17,8 @@ function App({settings}) {
             catalog: 'collaborators',
             fields: {
                 code: ['тн', '15%'],
-                fullname: ['ФИО', '60%'],
+                fullname: ['ФИО', '30%', 'is_title'],
+                position_name: ['должность', '30%'],
             },
             find: ['id', 'fullname', 'code'],
             callback: function (data) {

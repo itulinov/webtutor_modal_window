@@ -1,30 +1,28 @@
 import React from "react"
-import Record from "./Record"
-import Classes from "./Records.module.css"
+import useResize from "@hooks/useResize"
+import DesktopRecords from "./DesktopRecords"
+import MobileRecords from "./MobileRecords"
 
-function SearchRecords({fields, records, select, rows=7}) {
-    const styleForHeader = {cursor: 'default', background: 'none'}
-    const styleRows = {height: (rows * 2.43).toString() + 'rem'}
+function Records({fields, records, select, rows}) {
+    const [size] = useResize()
 
+    if (size <= 720) {
+        return (
+            <MobileRecords fields={fields}
+                records={records}
+                select={select}
+                rows={rows}
+            />
+        )
+    }
 
     return (
-        <div className={Classes.search_records}>
-            <div className={Classes.header}>
-                <Record fields={fields} style={styleForHeader}/>
-            </div>
-            <div className={Classes.records} style={styleRows}>
-                {records && records.map((record, i) => {
-                    return (
-                        <Record key={i}
-                            fields={fields}
-                            data={record}
-                            select={select}
-                        />
-                    )
-                })}
-            </div>
-        </div>
+        <DesktopRecords fields={fields}
+            records={records}
+            select={select}
+            rows={rows}
+        />
     )
 }
 
-export default SearchRecords
+export default Records
