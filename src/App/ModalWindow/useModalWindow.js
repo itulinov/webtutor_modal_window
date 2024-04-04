@@ -102,11 +102,11 @@ export default (params) => {
         records,
         selected,
         fields: param ? param.fields : {},
-    },
+    }, {
         getRecords,
-        closeModalWindow,
+        close: closeModalWindow,
         callback,
-        selectRecord,
-        excludeRecord
-    ]
+        select: selectRecord,
+        unselect: excludeRecord,
+    }]
 }

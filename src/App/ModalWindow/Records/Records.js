@@ -3,7 +3,8 @@ import useResize from "@hooks/useResize"
 import DesktopRecords from "./DesktopRecords"
 import MobileRecords from "./MobileRecords"
 
-function Records({fields, records, selected, select, rows}) {
+function Records(props) {
+    const {fields, records, selected, select, unselect, rows} = props
     const [size] = useResize()
 
     if (size <= 720) {
@@ -21,6 +22,7 @@ function Records({fields, records, selected, select, rows}) {
             records={records}
             selected={selected}
             select={select}
+            unselect={unselect}
             rows={rows}
         />
     )

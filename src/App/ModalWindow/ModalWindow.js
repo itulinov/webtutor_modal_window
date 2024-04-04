@@ -19,12 +19,18 @@ function ModalWindow({params}) {
         value,
         records,
         selected,
-    }, getRecords, close, callback, select, exclude] = useModalWindow(params)
+    }, {
+        getRecords,
+        close,
+        callback,
+        select,
+        unselect,
+    }] = useModalWindow(params)
+
 
     if (!show) {
         return null
     }
-
 
     return (
         <div>
@@ -41,11 +47,13 @@ function ModalWindow({params}) {
                         records={records}
                         selected={selected}
                         select={select}
+                        unselect={unselect}
                     />
                     <Records fields={fields}
                         records={selected}
                         selected={selected}
-                        select={exclude}
+                        select={unselect}
+                        unselect={unselect}
                         rows={3}
                     />
                     <Action close={close} apply={callback} />

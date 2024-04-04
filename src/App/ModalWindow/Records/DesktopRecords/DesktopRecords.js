@@ -2,7 +2,8 @@ import React from "react"
 import Record from "./Record"
 import Classes from "./DesktopRecords.module.css"
 
-export default ({fields, records, selected, select, rows=7}) => {
+export default (props) => {
+    const {fields, records, selected, select, unselect, rows=7} = props
     const styleForHeader = {cursor: 'default', background: 'none'}
     const styleRows = {height: (rows * 2.43).toString() + 'rem'}
 
@@ -24,6 +25,7 @@ export default ({fields, records, selected, select, rows=7}) => {
                             data={record}
                             selected={selected}
                             select={select}
+                            unselect={unselect}
                         />
                     )
                 })}

@@ -4,7 +4,7 @@ import * as faIconsRegilar from '@fortawesome/free-regular-svg-icons'
 //import * as faIconsSolid from '@fortawesome/free-solid-svg-icons'
 import Classes from "./CheckBox.module.css"
 
-function CheckBox({show, isChecked}) {
+function CheckBox({show, isChecked, unchecked}) {
     if (!show) {
         return null
     }
@@ -15,8 +15,8 @@ function CheckBox({show, isChecked}) {
     }
 
     return (
-        <div>
-            <FontAwesomeIcon icon={icon} />
+        <div className={Classes.checkbox}>
+            <FontAwesomeIcon icon={icon} onClick={unchecked}/>
         </div>
     )
 }
