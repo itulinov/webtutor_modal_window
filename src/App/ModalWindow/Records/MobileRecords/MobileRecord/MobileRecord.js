@@ -27,6 +27,7 @@ function MobileRecord(props) {
                     <FontAwesomeIcon icon={faIcons["faChevronDown"]} />
                 </div>
             </div>
+            <div>zhora</div>
         </div>
     )
 }

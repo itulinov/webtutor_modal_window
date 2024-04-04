@@ -1,8 +1,10 @@
+.record_wrap {
+    border-bottom: 1px solid #e8e8ee;
+}
 .record {
     display: flex;
     flex-wrap: nowrap;
     gap: .063rem;
-    border-bottom: 1px solid #e8e8ee;
 }
 
 .record svg {
