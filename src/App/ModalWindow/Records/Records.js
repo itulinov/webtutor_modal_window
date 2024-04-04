@@ -11,7 +11,9 @@ function Records(props) {
         return (
             <MobileRecords fields={fields}
                 records={records}
+                selected={selected}
                 select={select}
+                unselect={unselect}
                 rows={rows}
             />
         )
