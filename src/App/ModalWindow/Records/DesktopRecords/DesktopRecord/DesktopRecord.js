@@ -1,12 +1,12 @@
 import React from "react"
 import Icon from "@App/ModalWindow/shared/Icon"
-import useRecord from "./useRecord"
+import useDesktopRecord from "./useDesktopRecord"
 
-import Classes from "./Record.module.css"
+import Classes from "./DesktopRecord.module.css"
 
 
-function Record(props) {
-    const [rec, doRec] = useRecord(props)
+function DesktopRecord(props) {
+    const [rec, doRec] = useDesktopRecord(props)
 
 
     return (
@@ -16,8 +16,7 @@ function Record(props) {
         >
             <div className={Classes.check_box}>
                 <Icon icon={rec.icon}
-                    isChecked={rec.isChecked}
-                    show={rec.isCheckBox}
+                    show={rec.isIcon}
                     click={() => doRec.unselect(rec.data)}
                 />
                 
@@ -39,4 +38,4 @@ function Record(props) {
     )
 }
 
-export default Record
+export default DesktopRecord

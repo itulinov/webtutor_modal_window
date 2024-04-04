@@ -1,5 +1,5 @@
 import React from "react"
-import Record from "./Record"
+import MobileRecord from "./MobileRecord"
 import Classes from "./MobileRecords.module.css"
 
 function MobileRecords(props) {
@@ -13,12 +13,13 @@ function MobileRecords(props) {
 
     return (
         <div className={Classes.mobile_records}>
-            <div style={styleRows}>
+            <div style={styleRows} className={Classes.records} >
                 {data && data.map((record, i) => {
                     return (
-                        <Record key={record.id}
+                        <MobileRecord key={record.id}
                             fields={fields}
                             data={record}
+                            selected={selected}
                             select={select}
                             unselect={unselect}
                         />

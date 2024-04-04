@@ -7,6 +7,10 @@
     cursor: pointer;
 }
 
+.record svg {
+    height: 18px;
+}
+
 .record:hover svg {
     //background-color: #e8e8ee;
     color: #000;

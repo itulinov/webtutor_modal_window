@@ -1,5 +1,5 @@
 import React from "react"
-import Record from "./Record"
+import DesktopRecord from "./DesktopRecord"
 import Classes from "./DesktopRecords.module.css"
 
 export default (props) => {
@@ -15,12 +15,12 @@ export default (props) => {
     return (
         <div className={Classes.search_records}>
             <div className={Classes.header}>
-                <Record fields={fields} style={styleForHeader}/>
+                <DesktopRecord fields={fields} style={styleForHeader}/>
             </div>
             <div className={Classes.records} style={styleRows}>
                 {data && data.map((record, i) => {
                     return (
-                        <Record key={record.id}
+                        <DesktopRecord key={record.id}
                             fields={fields}
                             data={record}
                             selected={selected}

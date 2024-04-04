@@ -1,0 +1,54 @@
+.record {
+    display: flex;
+    flex-wrap: nowrap;
+    gap: .063rem;
+    border-bottom: 1px solid #e8e8ee;
+}
+
+.record svg {
+    height: 18px;
+}
+
+.record:hover svg {
+    //background-color: #e8e8ee;
+    //color: #000;
+}
+
+.record > div {
+    padding: .625rem .3rem;
+    flex: 1 1 auto;
+}
+
+.record > div:first-child {
+    cursor: pointer;
+    flex: 0 0 4%;
+}
+
+.record:hover {
+    color: #000;
+}
+.record > div:last-child {
+    color: #727a8d;
+}
+.record > div:last-child:hover {
+    color: #000;
+}
+.record > div:nth-child(2) {
+    cursor: pointer;
+    color: #727a8d;
+}
+
+
+.record > div:last-child {
+    cursor: pointer;
+    flex: 0 0 4%;
+}
+
+.record > div:last-child svg {
+    border-left: 1px solid #e8e8ee;
+    padding-left: .6rem;
+}
+
+.record > div:last-child:hover {
+    font-weight: 800;
+}

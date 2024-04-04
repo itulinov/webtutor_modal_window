@@ -4,7 +4,7 @@ import * as faIcons from '@fortawesome/free-regular-svg-icons'
 //import * as faIconsSolid from '@fortawesome/free-solid-svg-icons'
 import Classes from "./Icon.module.css"
 
-function Icon({icon, show, isChecked, click}) {
+function Icon({icon, show, click}) {
     if (!show) {
         return null
     }
