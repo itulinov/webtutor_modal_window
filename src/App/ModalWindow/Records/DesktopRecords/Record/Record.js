@@ -1,5 +1,5 @@
 import React from "react"
-import CheckBox from "@App/ModalWindow/shared/CheckBox"
+import Icon from "@App/ModalWindow/shared/Icon"
 import useRecord from "./useRecord"
 
 import Classes from "./Record.module.css"
@@ -8,7 +8,6 @@ import Classes from "./Record.module.css"
 function Record(props) {
     const [rec, doRec] = useRecord(props)
 
-    console.log(doRec.select?.name)
 
     return (
         <div className={Classes.record}
@@ -16,9 +15,10 @@ function Record(props) {
             onClick={() => doRec.select(rec.data)}
         >
             <div className={Classes.check_box}>
-                <CheckBox isChecked={rec.isChecked}
+                <Icon icon={rec.icon}
+                    isChecked={rec.isChecked}
                     show={rec.isCheckBox}
-                    unchecked={() => doRec.unselect(rec.data)}
+                    click={() => doRec.unselect(rec.data)}
                 />
                 
             </div>

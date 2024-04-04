@@ -7,8 +7,9 @@
     cursor: pointer;
 }
 
-.record:hover {
-    background-color: #e8e8ee;
+.record:hover svg {
+    //background-color: #e8e8ee;
+    color: #000;
 }
 
 .header {
