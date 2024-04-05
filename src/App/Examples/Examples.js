@@ -1,8 +1,9 @@
 import React from "react"
 import {
     collaborator,
-    flaw
-} from "./examplesi_lib"
+    flaw,
+    collection,
+} from "./example_lib"
 
 function Examples({isDev}) {
     if (!isDev) {
@@ -19,6 +20,11 @@ function Examples({isDev}) {
             <div>
                 <button onClick={flaw}>
                     {flaw.name}
+                </button>
+            </div>
+            <div>
+                <button onClick={collection}>
+                    {collection.name}
                 </button>
             </div>
         </div>

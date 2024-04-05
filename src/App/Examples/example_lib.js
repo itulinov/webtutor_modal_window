@@ -16,6 +16,24 @@ const collaborator = () => {
     mw.show()
 }
 
+const collection = () => {
+    const mw = new window.document.beeline.ModalWindow({
+        collection: 'collaborators',
+        fields: {
+            code: ['Табельный №', '15%'],
+            fullname: ['ФИО', '30%', 'is_title'],
+            position_name: ['Должность', '20%'],
+            position_parent_name: ['Подразделение', '20%'],
+        },
+        find: ['id', 'fullname', 'code'],
+        callback: function (data) {
+            console.log(data)
+        }
+    })
+
+    mw.show()
+}
+
 const flaw = () => {
     const mw = new window.document.beeline.ModalWindow({
         catalog: "collaborators",
@@ -33,5 +51,6 @@ const flaw = () => {
 
 export {
     collaborator,
-    flaw
+    flaw,
+    collection,
 }

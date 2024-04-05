@@ -64,12 +64,12 @@ const isFind = (find) => {
  * @return {object}
  */
 const checkParam = (param) => {
-    const {catalog, fields, find} = param
+    const {catalog, collection, fields, find} = param
 
-    if (!catalog) {
+    if (!catalog && !collection) {
         return {
             success: false,
-            error: "Не задан каталог (catalog)"
+            error: "Не задан ни один из параметров: catalog или collection"
         }
     }
 

@@ -18,12 +18,13 @@ const getFields = (fields) => {
  * @return {object}
  */
 const getRequestParams = (param, value) => {
-    const catalog = param.catalog.toString().toLowerCase()
+    const {catalog="", collection=""} = param
     const fields = getFields(param.fields)
     const find = param.find.join(",")
 
     return {
         catalog,
+        collection,
         fields,
         find,
         value,
