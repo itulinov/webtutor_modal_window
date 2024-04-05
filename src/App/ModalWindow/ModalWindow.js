@@ -33,7 +33,6 @@ function ModalWindow({params}) {
         return null
     }
 
-    console.log("zhora")
     return (
         <div>
             <div className={Classes.background}></div>

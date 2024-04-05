@@ -4,6 +4,14 @@ import usePortal from "./usePortal"
 
 export default () => {
     const [portalParams] = usePortal()
+    const isDev = () => {
+        const url = new URL(window.location)
+        if (url.host.toString().toLowerCase().indexOf("localhost") > -1) {
+            return true
+        }
+
+        return false
+    }
 
     const getData = (param, fn = () => {}) => {
         import ("@services/modal_window_lib.js").catch((err) => {
@@ -21,5 +29,6 @@ export default () => {
     return [{
         ...portalParams,
         getData,
+        isDev: isDev(),
     }]
 }
