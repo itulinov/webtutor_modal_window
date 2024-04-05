@@ -2,7 +2,7 @@ import React from "react"
 import {
     collaborator,
     flaw
-} from "@App/ModalWindow/lib/example"
+} from "./examplesi_lib"
 
 function Examples({isDev}) {
     if (!isDev) {

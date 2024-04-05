@@ -1,14 +1,12 @@
 {
     "name": "modal_window",
-    "version": "1.0.0",
+    "version": "2.0.0",
     "description": "modal_window",
     "main": "./index.js",
     "homepage": "/custom_projects/modal_window/build",
     "scripts": {
-        "start": "webpack --mode development --watch",
-        "build": "webpack --mode production",
-        "build-app": "webpack --config ./webpack.config.prod.js",
-        "start-bs": "node ."
+        "build": "webpack --config ./webpack.config.prod.js",
+        "start": "node ."
     },
     "author": "Ivan Tulinov <iTulinov@beeline.ru",
     "license": "ISC",
