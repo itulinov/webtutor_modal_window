@@ -14,7 +14,7 @@ function MobileRecords(props) {
     return (
         <div className={Classes.mobile_records}>
             <div style={styleRows} className={Classes.records} >
-                {data && data.map((record, i) => {
+                {data && data.map((record) => {
                     return (
                         <MobileRecord key={record.id}
                             fields={fields}

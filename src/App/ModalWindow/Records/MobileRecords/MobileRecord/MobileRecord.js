@@ -14,7 +14,6 @@ function MobileRecord(props) {
     const [rec, doRec] = useMobileRecord(props)
     const [{height, content}, toggle] = useDropDown()
 
-    console.log("height", height)
     return (
         <div className={Classes.record_wrap}>
             <div className={Classes.record}>

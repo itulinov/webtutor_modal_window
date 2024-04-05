@@ -1,4 +1,4 @@
-import React, {useState} from "react"
+import React, {useState, useEffect} from "react"
 import getRequestParams from "./lib/getRequestParams"
 import { START, HELP, VALUE_IS_LITTLE } from "./lib/consts"
 
@@ -11,6 +11,7 @@ export default (params) => {
         close,
     } = params
 
+    const [style, setStyle] = useState({})
     const [info, setInfo] = useState(START)
     const [selected, setSelect] = useState({})
     const [records, setRecords] = useState(null)
@@ -25,6 +26,15 @@ export default (params) => {
         close()
     }
 
+    // анимируем показ модального окна
+    useEffect(() => {
+        if (!show) {
+            setStyle({})
+            return
+        }
+
+        setTimeout(() => { setStyle({ opacity: "1", top: "50%", }) }, 0)
+    }, [show])
 
     /**
      * Исключение элементов
@@ -41,7 +51,6 @@ export default (params) => {
         setInfo(HELP)
         setSelect(newSelected)
     }
-
 
     /**
      * Выбор элементов
@@ -97,6 +106,7 @@ export default (params) => {
 
     return [{
         show,
+        style,
         info,
         loading,
         records,

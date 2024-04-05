@@ -1,4 +1,4 @@
-import React from "react"
+import React, {useState} from "react"
 
 import Header from "./Header"
 import Close from "./Close"
@@ -13,6 +13,7 @@ import Classes from "./ModalWindow.module.css"
 function ModalWindow({params}) {
     const [{
         show,
+        style,
         info,
         loading,
         fields,
@@ -32,10 +33,11 @@ function ModalWindow({params}) {
         return null
     }
 
+    console.log("zhora")
     return (
         <div>
             <div className={Classes.background}></div>
-            <div className={Classes.modal_window}>
+            <div className={Classes.modal_window} style={style}>
                 <Close close={close} />
                 <div className={Classes.padding}>
                     <Header type={params.param.catalog} />
