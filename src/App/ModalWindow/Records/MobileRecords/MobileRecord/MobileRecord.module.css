@@ -40,6 +40,10 @@
     color: #727a8d;
 }
 
+.wrapper {
+    transition: max-height 400ms;
+    overflow: hidden;
+}
 
 .record > div:last-child {
     cursor: pointer;

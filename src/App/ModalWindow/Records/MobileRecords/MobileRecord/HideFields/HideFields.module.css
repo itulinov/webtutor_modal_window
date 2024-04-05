@@ -1,0 +1,18 @@
+.hide_fields {
+    padding: 0 .3rem;
+    padding-bottom: .6rem;
+}
+
+.hide_field {
+    display: flex;
+    justify-content: start;
+    gap: .4rem;
+}
+
+.hide_field > div:first-child {
+    font-weight: 800;
+}
+
+.hide_field > div:last-child {
+    flex: 1 1 auto;
+}
