@@ -3,6 +3,7 @@ import React, {useRef} from "react"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import * as faIcons from '@fortawesome/free-solid-svg-icons'
 import Icon from "@App/ModalWindow/shared/Icon"
+import HideFields from "./HideFields"
 import useMobileRecord from "./useMobileRecord"
 
 import Classes from "./MobileRecord.module.css"
@@ -27,7 +28,7 @@ function MobileRecord(props) {
                     <FontAwesomeIcon icon={faIcons["faChevronDown"]} />
                 </div>
             </div>
-            <div>zhora</div>
+            <HideFields record={rec} />
         </div>
     )
 }
