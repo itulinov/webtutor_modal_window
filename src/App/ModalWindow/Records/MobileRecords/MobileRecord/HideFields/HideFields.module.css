@@ -1,12 +1,15 @@
 .hide_fields {
     padding: 0 .3rem;
-    padding-bottom: .6rem;
+    padding-bottom: .3rem;
 }
 
 .hide_field {
+    /*
     display: flex;
     justify-content: start;
     gap: .4rem;
+    */
+    margin-bottom: .29rem;
 }
 
 .hide_field > div:first-child {

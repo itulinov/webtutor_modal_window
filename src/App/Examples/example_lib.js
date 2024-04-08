@@ -3,11 +3,11 @@ const collaborator = () => {
         catalog: 'collaborators',
         fields: {
             code: ['Табельный №', '15%'],
-            fullname: ['ФИО', '30%', 'is_title'],
+            fullname: ['ФИО', '20%', 'is_title'],
             position_name: ['Должность', '20%'],
-            position_parent_name: ['Подразделение', '20%'],
+            position_parent_name: ['Подразделение', '40%'],
         },
-        find: ['id', 'fullname', 'code'],
+        find: ['fullname', 'code'],
         callback: function (data) {
             console.log(data)
         }
@@ -25,7 +25,7 @@ const collection = () => {
             position_name: ['Должность', '20%'],
             position_parent_name: ['Подразделение', '20%'],
         },
-        find: ['id', 'fullname', 'code'],
+        find: ['fullname', 'code'],
         callback: function (data) {
             console.log(data)
         }
