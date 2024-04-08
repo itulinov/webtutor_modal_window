@@ -35,7 +35,7 @@ export default () => {
                 setResponse(res.data)
             })
             .catch((err) => {
-                // console.log('err', err)
+                //console.log('err', err)
                 setIsLoading(false)
                 setError(err)
             })
@@ -51,7 +51,7 @@ export default () => {
  * @return - данные ответа
  */
 const getFetchData = async (url, options) => {
-    const res = await fetch('https://bu-online.beeline.ru/' + url, options)
+    const res = await fetch(url, options)
     const resBody = await res.json()
     if (!resBody.success) {
         throw resBody.error
