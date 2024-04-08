@@ -28,7 +28,7 @@ function DesktopRecord(props) {
                 return (
                     <div key={i}
                         style={{flex: "1 1 " + width}}
-                        className={rec.data ? null : Classes.header}
+                        className={rec.data ? Classes.field : Classes.header}
                     >
                         {field}
                     </div>

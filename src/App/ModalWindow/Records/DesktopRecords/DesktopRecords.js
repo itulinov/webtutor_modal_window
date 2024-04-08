@@ -4,7 +4,7 @@ import Classes from "./DesktopRecords.module.css"
 
 export default (props) => {
     const {fields, records, selected, select, unselect, rows=7} = props
-    const styleForHeader = {cursor: 'default', background: 'none'}
+    const styleForHeader = {cursor: 'default'}
     const styleRows = {height: (rows * 2.43).toString() + 'rem'}
 
     let data = records

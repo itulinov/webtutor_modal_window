@@ -38,6 +38,7 @@
 .record > div:nth-child(2) {
     cursor: pointer;
     color: #727a8d;
+    overflow: hidden;
 }
 
 .wrapper {
@@ -58,3 +59,13 @@
 .record > div:last-child:hover {
     font-weight: 800;
 }
+
+
+/*
+@media (max-width: 450px) {
+    .record > div:nth-child(2) {
+        max-width: 90px;
+        overflow: hidden;
+    }
+}
+*/
