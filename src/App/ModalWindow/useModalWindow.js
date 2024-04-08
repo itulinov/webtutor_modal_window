@@ -83,14 +83,14 @@ export default (params) => {
         var paramsRequest = getRequestParams(param, value)
         setLoading(true)
 
-        getData(paramsRequest, (result) => {
-            if (!result.success) {
-                console.log(result.error)
+        getData(paramsRequest, (res) => {
+            if (!res.success) {
+                console.log(res.error)
                 setLoading(false)
                 return
             }
 
-            setRecords(JSON.parse(result.data))
+            setRecords(JSON.parse(res.data))
             setLoading(false)
 
             setInfo(HELP)
