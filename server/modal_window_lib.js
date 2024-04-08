@@ -6,7 +6,7 @@
 function addLog(value, name) {
     var sLogName = name;
     if (sLogName == undefined) {
-        sLogName = 'mw_lib_log';
+        sLogName = 'mw_lib';
     }
 
     EnableLog(sLogName);
@@ -571,4 +571,101 @@ function isEval(user_id) {
     }
 
     return true
+}
+
+
+/**
+ * Получить строку подключения
+ * @param {string} name
+ * @return {string}
+ */
+function getConnection(paramName) {
+    if (DataType(paramName) != 'string') {
+        return ""
+    }
+
+    if (StrCharCount(paramName) <= 0) {
+        return ""
+    }
+
+    return paramName
+}
+
+
+/**
+ * Работаем по sql запросу
+ * @param {object} param
+ * @return {array}
+ */
+function runSql(param) {
+    // строка sql-запроса
+    var ssql = getSqlString(param);
+
+    // поле для подключения к внешней БД
+    var fieldName = getConnection(param.connection)
+
+    // выполнит sql-запрос
+    return execSql(ssql, fieldName, param.sFields);
+}
+
+
+/**
+ * Получить идентификатор коллекции
+ * @param {string} collectionCode
+ * @return {integer}
+ */
+function getCollectionId(collectionCode) {
+    var ssql = (
+        "SELECT id \n " +
+        "FROM remote_collections \n " +
+        "WHERE code = " + collectionCode + " \n "
+    )
+
+    var collection = ArrayOptFirstElem(XQuery("sql: " + ssql))
+    if (collection == undefined) {
+        throw "collection is undefined"
+    }
+
+    return Int(collection.id)
+}
+
+
+/**
+ * Работаем по выборке
+ * @param {object} param
+ * @param {object} Request
+ * @return {array}
+ */
+function runCollection(param, Request) {
+    var id = getCollectionId(param.collection)
+
+    var path = "x-local://wt/web/custom_projects/libs/collection_lib.js"
+    var collection_lib = OpenCodeLib(path)
+
+    var settings = { id: id, wvars: { value: param.sValue } }
+    addLog(tools.object_to_text(settings, 'json'))
+    var result = collection_lib.execCollection(settings, Request)
+    addLog("resutl: " + tools.object_to_text(result, 'json'))
+
+    if (!result.success) {
+        throw result.messageText
+    }
+
+    return result.results
+}
+
+
+/**
+ * Запустить поиск записей
+ * @param {object} param
+ * @param {object} Request
+ * @return {array}
+ */
+function run(param, Request) {
+    // по выборке
+    if (param.collection != "''") {
+        return runCollection(param, Request)
+    }
+
+    return runSql(param)
 }

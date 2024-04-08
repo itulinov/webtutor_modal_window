@@ -38,21 +38,11 @@ try {
                 filter: body.GetOptProperty('user-where'),
                 ssql: body.GetOptProperty('ssql'),
                 connection: body.GetOptProperty('connection', ''),
+                collection: XQueryLiteral(body.GetOptProperty("collection")),
             }
 
-            // получить sql-запрос
-            var ssql = lib.getSqlString(param);
+            var result = lib.run(param, Request)
 
-            // строка подключения к внешней системе
-            var sServerName = '';
-            if (DataType(param.connection) == 'string' && StrCharCount(param.connection) > 0) {
-                sServerName = param.connection;
-            }
-
-            // выполнит sql-запрос
-            var result = lib.execSql(ssql, sServerName, param.sFields);
-
-            //Response.Write(tools.object_to_text(result, 'json'));
             Response.Write(tools.object_to_text({
                 success: true,
                 data: tools.object_to_text(result, 'json'),
