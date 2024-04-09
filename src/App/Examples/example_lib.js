@@ -2,7 +2,7 @@ const connection = () => {
     const mw = new window.document.beeline.ModalWindow({
         catalog: 'cpk',
         fields: {
-            Код: ['Код', '9%'],
+            id: ['Код', '9%'],
             Фамилия: ['Фамилия', '24%'],
             Имя: ['Имя', '24%'],
             winlogin: ['Логин', '20%'],
@@ -13,7 +13,8 @@ const connection = () => {
             console.log(arrId)
         },
         ssql:   "SELECT " +
-                "     Код " +
+                "     winlogin id " +
+                "     ,Код " +
                 "     ,Фамилия " +
                 "     ,Имя " +
                 "     ,winlogin " +

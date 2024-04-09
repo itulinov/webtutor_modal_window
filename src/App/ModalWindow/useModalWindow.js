@@ -24,6 +24,7 @@ export default (params) => {
         // очистить прошлый результат
         setRecords(null)
         setSelect({})
+        setInfo(START)
 
         // закрыть модальное окно
         close()
@@ -125,6 +126,7 @@ export default (params) => {
                 return
             }
 
+            console.log(res.data)
             setRecords(res.data)
             setLoading(false)
 
@@ -140,6 +142,7 @@ export default (params) => {
             return
         }
 
+        setInfo(START)
         const result = Object.values(selected)
         param.callback(result)
     }
