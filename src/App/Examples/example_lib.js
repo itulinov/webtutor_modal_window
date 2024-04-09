@@ -1,3 +1,29 @@
+const setRecord = () => {
+    const mw = new window.document.beeline.ModalWindow({
+        catalog: 'collaborators',
+        fields: {
+            code: ['Табельный №', '15%'],
+            fullname: ['ФИО', '20%', 'is_title'],
+            position_name: ['Должность', '20%'],
+            position_parent_name: ['Подразделение', '40%'],
+        },
+        multiselect: true,
+        find: ['fullname', 'code'],
+        callback: function (data) {
+            console.log(data)
+        },
+    })
+
+    const record = [{
+        id: "1234",
+        fullname: "Zhora",
+        position_name: "position",
+        position_parent_name: "subdivision",
+        code: "test",
+    }]
+    mw.show(record)
+}
+
 const multiselect = () => {
     const mw = new window.document.beeline.ModalWindow({
         catalog: 'collaborators',
@@ -121,6 +147,7 @@ const flaw = () => {
 }
 
 export {
+    setRecord,
     multiselect,
     where,
     force,

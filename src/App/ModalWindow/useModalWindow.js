@@ -7,6 +7,7 @@ export default (params) => {
     const {
         show,
         param,
+        records: defRecords,
         getData,
         close,
     } = params
@@ -22,7 +23,7 @@ export default (params) => {
     const closeModalWindow = () => {
         // очистить прошлый результат
         setRecords(null)
-        setSelect([])
+        setSelect({})
 
         // закрыть модальное окно
         close()
@@ -47,7 +48,20 @@ export default (params) => {
 
         getRecords(null)
     }, [force])
-    
+
+
+    // установить изначальные записи
+    useEffect(() => {
+        if (!defRecords) {
+            return
+        }
+
+        setSelect(defRecords.reduce((acc, sld) => {
+            return {...acc, [sld.id]: {...sld}}
+        }, {}))
+    }, [defRecords])
+
+
     /**
      * Исключение элементов
      */

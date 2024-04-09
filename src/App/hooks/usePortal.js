@@ -4,6 +4,7 @@ import checkParam from "@App/ModalWindow/lib/checkParam"
 
 export default () => {
     const [param, setParam] = useState(null)
+    const [records, setRecords] = useState([])
     const [show, setShow] = useState(false)
 
     useEffect(() => {
@@ -19,11 +20,12 @@ export default () => {
 
             const self = {param}
 
-            self.show = () => {
+            self.show = (rec) => {
                 if (!check.success) {
                     return
                 }
 
+                setRecords(rec)
                 setShow(true)
                 setParam(param)
             }
@@ -41,6 +43,7 @@ export default () => {
 
     return [{
         param,
+        records,
         show,
         close: () => setShow(false),
     }]
