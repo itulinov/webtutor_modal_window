@@ -45,7 +45,7 @@ try {
 
             Response.Write(tools.object_to_text({
                 success: true,
-                data: tools.object_to_text(result, 'json'),
+                data: result
             }, 'json'))
             break;
         }

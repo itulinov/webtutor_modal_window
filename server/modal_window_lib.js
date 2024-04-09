@@ -654,6 +654,28 @@ function runCollection(param, Request) {
     return result.results
 }
 
+/**
+ * Проверить, есть ли выборка
+ * @param {string} collection
+ * @return {bool}
+ */
+function isCollection(collection) {
+    var sCollection = String(collection)
+    addLog("sCollection: " + sCollection)
+    if (sCollection == "''") {
+        addLog("fale")
+        return false
+    }
+
+    if (sCollection == "") {
+        addLog("fale")
+        return false
+    }
+
+    addLog("true")
+    return true
+}
+
 
 /**
  * Запустить поиск записей
@@ -663,7 +685,8 @@ function runCollection(param, Request) {
  */
 function run(param, Request) {
     // по выборке
-    if (param.collection != "''") {
+    if (isCollection(param.collection)) {
+        addLog("zhora")
         return runCollection(param, Request)
     }
 

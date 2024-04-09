@@ -90,7 +90,7 @@ export default (params) => {
                 return
             }
 
-            setRecords(JSON.parse(res.data))
+            setRecords(res.data)
             setLoading(false)
 
             setInfo(HELP)
