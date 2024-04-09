@@ -2,7 +2,7 @@ import {useState, useEffect} from "react"
 import usePortal from "./usePortal"
 
 
-export default () => {
+export default (settings) => {
     const [portalParams] = usePortal()
     const isDev = () => {
         const url = new URL(window.location)

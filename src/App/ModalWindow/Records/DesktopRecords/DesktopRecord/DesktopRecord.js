@@ -19,14 +19,13 @@ function DesktopRecord(props) {
                     show={rec.isIcon}
                     click={() => doRec.unselect(rec.data)}
                 />
-                
             </div>
-            {Object.keys(rec.fields).map((fieldName, i) => {
+            {Object.keys(rec.fields).map((fieldName, index) => {
                 const [columnName, width] = rec.fields[fieldName]
                 const field = rec.data ? rec.data[fieldName] : columnName
 
                 return (
-                    <div key={i}
+                    <div key={index}
                         style={{flex: "1 1 " + width}}
                         className={rec.data ? Classes.field : Classes.header}
                     >

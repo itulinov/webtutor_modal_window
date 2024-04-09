@@ -4,7 +4,12 @@ import ModalWindow from "./ModalWindow"
 import Examples from "./Examples"
 
 function App({settings}) {
-    const [modal] = useApp()
+    if (!settings.success) {
+        console.log(settings)
+        return null
+    }
+
+    const [modal] = useApp(settings.data)
     if (!modal) {
         return <div>modal window is not ready</div>
     }
