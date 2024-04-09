@@ -10,7 +10,6 @@ function LoadConfig({ settings, children }) {
     const [{ isLoading, response, error }, doFetch] = useFetch()
 
     useEffect(() => {
-        console.log("exec")
         doFetch(DEV_URL, {
             action: 'exec',
             codes: settings,

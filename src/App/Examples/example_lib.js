@@ -1,4 +1,38 @@
-const collaborator = () => {
+const force = () => {
+    const mw = new window.document.beeline.ModalWindow({
+        catalog: 'cs',
+        fields: {
+            fullname: ['ФИО', '20%']
+        },
+        find: ['id', 'fullname', 'code'],
+        force: true,
+        callback: function (data) {
+            console.log(data)
+        },
+        ssql: "SELECT top 5 cs.id, cs.fullname FROM collaborators AS cs"
+    })
+
+    mw.show()
+}
+
+const sql = () => {
+    const mw = new window.document.beeline.ModalWindow({
+        catalog: 'cs',
+        fields: {
+            fullname: ['ФИО', '20%'],
+            code: ['Табельный №', '15%'],
+        },
+        find: ['id', 'fullname', 'code'],
+        callback: function (data) {
+            console.log(data)
+        },
+        ssql: "SELECT cs.id, cs.fullname, cs.code FROM collaborators AS cs"
+    })
+
+    mw.show()
+}
+
+const catalog = () => {
     const mw = new window.document.beeline.ModalWindow({
         catalog: 'collaborators',
         fields: {
@@ -25,7 +59,6 @@ const collection = () => {
             position_name: ['Должность', '20%'],
             position_parent_name: ['Подразделение', '20%'],
         },
-        find: ['fullname', 'code'],
         callback: function (data) {
             console.log(data)
         }
@@ -50,7 +83,9 @@ const flaw = () => {
 }
 
 export {
-    collaborator,
+    force,
+    sql,
+    catalog,
     flaw,
     collection,
 }

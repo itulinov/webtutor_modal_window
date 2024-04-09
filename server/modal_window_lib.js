@@ -388,10 +388,10 @@ function getRegExp(pattern, obj_reg_exp) {
 
 /**
  * Разобрать sql строку
- * @param {string}
+ * @param {string} ssql
  * @return {object}
  */
-function parseSql(sql) {
+function parseSql(ssql) {
     var preparedObject = getPrepareSqlString(ssql);
     return fillObject(preparedObject);
 }
@@ -438,6 +438,7 @@ function getCustomSql(param) {
     if (isWarningSql(ssql)) {
         return '';
     }
+
     var objSql = parseSql(ssql);
 
     var result = [];
@@ -600,6 +601,7 @@ function getConnection(paramName) {
 function runSql(param) {
     // строка sql-запроса
     var ssql = getSqlString(param);
+    //addLog(ssql)
 
     // поле для подключения к внешней БД
     var fieldName = getConnection(param.connection)
@@ -643,10 +645,7 @@ function runCollection(param, Request) {
     var collection_lib = OpenCodeLib(path)
 
     var settings = { id: id, wvars: { value: param.sValue } }
-    addLog(tools.object_to_text(settings, 'json'))
     var result = collection_lib.execCollection(settings, Request)
-    addLog("resutl: " + tools.object_to_text(result, 'json'))
-
     if (!result.success) {
         throw result.messageText
     }
@@ -661,18 +660,14 @@ function runCollection(param, Request) {
  */
 function isCollection(collection) {
     var sCollection = String(collection)
-    addLog("sCollection: " + sCollection)
     if (sCollection == "''") {
-        addLog("fale")
         return false
     }
 
     if (sCollection == "") {
-        addLog("fale")
         return false
     }
 
-    addLog("true")
     return true
 }
 
@@ -686,7 +681,6 @@ function isCollection(collection) {
 function run(param, Request) {
     // по выборке
     if (isCollection(param.collection)) {
-        addLog("zhora")
         return runCollection(param, Request)
     }
 

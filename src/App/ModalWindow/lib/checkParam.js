@@ -80,7 +80,7 @@ const checkParam = (param) => {
         }
     }
 
-    if ( !isFind(find)) {
+    if ( !collection && !isFind(find)) {
         return {
             success: false,
             error: "Не задано или некорректно задано поле find"

@@ -1,6 +1,8 @@
 import React from "react"
 import {
-    collaborator,
+    force,
+    sql,
+    catalog,
     flaw,
     collection,
 } from "./example_lib"
@@ -13,8 +15,18 @@ function Examples({isDev}) {
     return (
         <div>
             <div>
-                <button onClick={collaborator}>
-                    {collaborator.name}
+                <button onClick={force}>
+                    {force.name}
+                </button>
+            </div>
+            <div>
+                <button onClick={sql}>
+                    {sql.name}
+                </button>
+            </div>
+            <div>
+                <button onClick={catalog}>
+                    {catalog.name}
                 </button>
             </div>
             <div>

@@ -12,6 +12,21 @@ const getFields = (fields) => {
 }
 
 
+
+/**
+ * Конвертирование полей
+ * @param {any} value
+ * @return {string}
+ */
+const getField = (value) => {
+    if (Array.isArray(value)) {
+        return value.join(",")
+    }
+
+    return ""
+}
+
+
 /**
  * Получить параметры для запроса на сервер
  * @param {object} param - параметры с клиентской части
@@ -20,7 +35,8 @@ const getFields = (fields) => {
 const getRequestParams = (param, value) => {
     const {catalog="", collection=""} = param
     const fields = getFields(param.fields)
-    const find = param.find.join(",")
+    const find = getField(param.find)
+    const force = param.force ? true : false
 
     return {
         catalog,
@@ -28,9 +44,10 @@ const getRequestParams = (param, value) => {
         fields,
         find,
         value,
+        force,
         ids: "",
         'user-where': "1=1",
-        ssql: "",
+        ssql: param.ssql,
         connection: "",
     }
 }

@@ -11,6 +11,8 @@ export default (params) => {
         close,
     } = params
 
+    const {force} = param ? param : {}
+
     const [style, setStyle] = useState({})
     const [info, setInfo] = useState(START)
     const [selected, setSelect] = useState({})
@@ -36,6 +38,16 @@ export default (params) => {
         setTimeout(() => { setStyle({ opacity: "1", top: "50%", }) }, 0)
     }, [show])
 
+
+    // принудительный первый запрос
+    useEffect(() => {
+        if (force !== true) {
+            return
+        }
+
+        getRecords(null)
+    }, [force])
+    
     /**
      * Исключение элементов
      */
@@ -74,8 +86,8 @@ export default (params) => {
      * Получение записей с сервера
      * @param {string} value - строка поиска
      */
-    const getRecords = (value) => {
-        if (value.length < 3) {
+    const getRecords = (value="") => {
+        if (value !== null && value.length < 3) {
             setInfo(VALUE_IS_LITTLE)
             return
         }
@@ -83,18 +95,20 @@ export default (params) => {
         var paramsRequest = getRequestParams(param, value)
         setLoading(true)
 
-        getData(paramsRequest, (res) => {
-            if (!res.success) {
-                console.log(res.error)
+        setTimeout(() => {
+            getData(paramsRequest, (res) => {
+                if (!res.success) {
+                    console.log(res.error)
+                    setLoading(false)
+                    return
+                }
+
+                setRecords(res.data)
                 setLoading(false)
-                return
-            }
 
-            setRecords(res.data)
-            setLoading(false)
-
-            setInfo(HELP)
-        })
+                setInfo(HELP)
+            })
+        }, 5000)
     }
 
     /**

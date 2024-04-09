@@ -19,13 +19,11 @@ function addLog(value, name) {
 
 // Точка входа
 try {
-    addLog("begin")
     var PATH = "x-local://wt/web/custom_projects/modal_window/modal_window_lib.js"
     var lib = OpenCodeLib(PATH).clear()
 
     var body = ParseJson(DecodeCharset(Request.Body, 'utf-8'))
     var action = body.GetOptProperty('action')
-    addLog("action: " + action)
 
     switch (action) {
         case "records": {
@@ -40,6 +38,7 @@ try {
                 connection: body.GetOptProperty('connection', ''),
                 collection: XQueryLiteral(body.GetOptProperty("collection")),
             }
+            //addLog("param: " + tools.object_to_text(param, 'json'))
 
             var result = lib.run(param, Request)
 
@@ -67,8 +66,6 @@ try {
             throw "action is undefined: " + action
         }
     }
-
-    addLog("end")
 }
 catch (err) {
     addLog("ERROR: " + String(err))
