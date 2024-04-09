@@ -2,7 +2,7 @@ const connection = () => {
     const mw = new window.document.beeline.ModalWindow({
         catalog: 'cpk',
         fields: {
-            id: ['Код', '9%'],
+            Код: ['Код', '9%'],
             Фамилия: ['Фамилия', '24%'],
             Имя: ['Имя', '24%'],
             winlogin: ['Логин', '20%'],

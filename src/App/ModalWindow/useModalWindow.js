@@ -126,7 +126,6 @@ export default (params) => {
                 return
             }
 
-            console.log(res.data)
             setRecords(res.data)
             setLoading(false)
 
