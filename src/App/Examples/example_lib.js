@@ -1,3 +1,33 @@
+const connection = () => {
+    const mw = new window.document.beeline.ModalWindow({
+        catalog: 'cpk',
+        fields: {
+            Код: ['Код', '9%'],
+            Фамилия: ['Фамилия', '24%'],
+            Имя: ['Имя', '24%'],
+            winlogin: ['Логин', '20%'],
+            Блок: ['Блок', '20%'],
+        },
+        find: ['Код', 'Фамилия', 'Имя', 'winlogin', 'Блок'],
+        callback: function (arrId) {
+            console.log(arrId)
+        },
+        ssql:   "SELECT " +
+                "     Код " +
+                "     ,Фамилия " +
+                "     ,Имя " +
+                "     ,winlogin " +
+                "     ,Блок " +
+                "FROM [rs].[DokEmployeesDatabaseUnion] AS cpk " +
+                "WHERE [Период отчетности] BETWEEN '20220101' AND '20220101' " +
+                "AND ЦБО in ('128','190') AND Должность not in ('Ученик') " +
+                "ORDER BY Код",
+        connection: "team_leader_for_cpk"
+    })
+
+    mw.show()
+}
+
 const setRecord = () => {
     const mw = new window.document.beeline.ModalWindow({
         catalog: 'collaborators',
@@ -147,6 +177,7 @@ const flaw = () => {
 }
 
 export {
+    connection,
     setRecord,
     multiselect,
     where,

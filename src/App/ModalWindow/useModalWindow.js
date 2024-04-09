@@ -50,9 +50,13 @@ export default (params) => {
     }, [force])
 
 
-    // установить изначальные записи
+    // установить дефолтных записей
     useEffect(() => {
         if (!defRecords) {
+            return
+        }
+
+        if (!Array.isArray(defRecords)) {
             return
         }
 

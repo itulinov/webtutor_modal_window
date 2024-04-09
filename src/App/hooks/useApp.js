@@ -4,7 +4,6 @@ import usePortal from "./usePortal"
 
 export default (settings) => {
     const [portalParams] = usePortal()
-    console.log(portalParams)
     const isDev = () => {
         const url = new URL(window.location)
         if (url.host.toString().toLowerCase().indexOf("localhost") > -1) {

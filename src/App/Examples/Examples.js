@@ -1,5 +1,6 @@
 import React from "react"
 import {
+    connection,
     setRecord,
     multiselect,
     where,
@@ -17,6 +18,11 @@ function Examples({isDev}) {
 
     return (
         <div>
+            <div>
+                <button onClick={connection}>
+                    {connection.name}
+                </button>
+            </div>
             <div>
                 <button onClick={setRecord}>
                     {setRecord.name}
