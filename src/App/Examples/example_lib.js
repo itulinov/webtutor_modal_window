@@ -1,3 +1,41 @@
+const multiselect = () => {
+    const mw = new window.document.beeline.ModalWindow({
+        catalog: 'collaborators',
+        fields: {
+            code: ['Табельный №', '15%'],
+            fullname: ['ФИО', '20%', 'is_title'],
+            position_name: ['Должность', '20%'],
+            position_parent_name: ['Подразделение', '40%'],
+        },
+        multiselect: false,
+        find: ['fullname', 'code'],
+        callback: function (data) {
+            console.log(data)
+        },
+    })
+
+    mw.show()
+}
+
+const where = () => {
+    const mw = new window.document.beeline.ModalWindow({
+        catalog: 'collaborators',
+        fields: {
+            code: ['Табельный №', '15%'],
+            fullname: ['ФИО', '20%', 'is_title'],
+            position_name: ['Должность', '20%'],
+            position_parent_name: ['Подразделение', '40%'],
+        },
+        find: ['fullname', 'code'],
+        callback: function (data) {
+            console.log(data)
+        },
+        where: "catalog.is_dismiss=0"
+    })
+
+    mw.show()
+}
+
 const force = () => {
     const mw = new window.document.beeline.ModalWindow({
         catalog: 'cs',
@@ -83,6 +121,8 @@ const flaw = () => {
 }
 
 export {
+    multiselect,
+    where,
     force,
     sql,
     catalog,

@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from "react"
 import getRequestParams from "./lib/getRequestParams"
-import { START, HELP, VALUE_IS_LITTLE } from "./lib/consts"
+import { MULTISELECT, START, HELP, VALUE_IS_LITTLE } from "./lib/consts"
 
 
 export default (params) => {
@@ -11,7 +11,7 @@ export default (params) => {
         close,
     } = params
 
-    const {force} = param ? param : {}
+    const {force, multiselect} = param ? param : {}
 
     const [style, setStyle] = useState({})
     const [info, setInfo] = useState(START)
@@ -69,6 +69,11 @@ export default (params) => {
      * @param {object} record - одна запись списка элементов
      */
     const selectRecord = (record) => {
+        if (multiselect === false && Object.values(selected).length > 0) {
+            setInfo(<b style={{color: "#cc003d"}}>{MULTISELECT}</b>)
+            return
+        }
+
         const foundField = Object.values(selected).find((sld) => {
             return sld.id === record.id
         })
@@ -95,20 +100,18 @@ export default (params) => {
         var paramsRequest = getRequestParams(param, value)
         setLoading(true)
 
-        setTimeout(() => {
-            getData(paramsRequest, (res) => {
-                if (!res.success) {
-                    console.log(res.error)
-                    setLoading(false)
-                    return
-                }
-
-                setRecords(res.data)
+        getData(paramsRequest, (res) => {
+            if (!res.success) {
+                console.log(res.error)
                 setLoading(false)
+                return
+            }
 
-                setInfo(HELP)
-            })
-        }, 5000)
+            setRecords(res.data)
+            setLoading(false)
+
+            setInfo(HELP)
+        })
     }
 
     /**

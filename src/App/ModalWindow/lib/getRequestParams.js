@@ -37,6 +37,7 @@ const getRequestParams = (param, value) => {
     const fields = getFields(param.fields)
     const find = getField(param.find)
     const force = param.force ? true : false
+    const where = param.where ? param.where : "1=1"
 
     return {
         catalog,
@@ -46,7 +47,7 @@ const getRequestParams = (param, value) => {
         value,
         force,
         ids: "",
-        'user-where': "1=1",
+        where,
         ssql: param.ssql,
         connection: "",
     }

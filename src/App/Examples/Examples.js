@@ -1,5 +1,7 @@
 import React from "react"
 import {
+    multiselect,
+    where,
     force,
     sql,
     catalog,
@@ -14,6 +16,16 @@ function Examples({isDev}) {
 
     return (
         <div>
+            <div>
+                <button onClick={multiselect}>
+                    {multiselect.name}
+                </button>
+            </div>
+            <div>
+                <button onClick={where}>
+                    {where.name}
+                </button>
+            </div>
             <div>
                 <button onClick={force}>
                     {force.name}
@@ -30,13 +42,13 @@ function Examples({isDev}) {
                 </button>
             </div>
             <div>
-                <button onClick={flaw}>
-                    {flaw.name}
+                <button onClick={collection}>
+                    {collection.name}
                 </button>
             </div>
             <div>
-                <button onClick={collection}>
-                    {collection.name}
+                <button onClick={flaw}>
+                    {flaw.name}
                 </button>
             </div>
         </div>

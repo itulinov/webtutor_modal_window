@@ -31,7 +31,7 @@ const add = (checked, select, unselect) => {
  */
 const remove = (checked, unselect) => {
     if (!checked) {
-        return () => {console.log("ch", checked)}
+        return () => {}
     }
 
     return unselect

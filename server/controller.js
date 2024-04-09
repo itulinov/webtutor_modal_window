@@ -33,7 +33,7 @@ try {
                 sFind: body.GetOptProperty('find'),
                 sValue: XQueryLiteral('%' + body.GetOptProperty('value') + '%'),
                 sIds: body.GetOptProperty('ids'),
-                filter: body.GetOptProperty('user-where'),
+                filter: body.GetOptProperty('where'),
                 ssql: body.GetOptProperty('ssql'),
                 connection: body.GetOptProperty('connection', ''),
                 collection: XQueryLiteral(body.GetOptProperty("collection")),
