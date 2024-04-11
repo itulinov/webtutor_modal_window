@@ -1,0 +1,4 @@
+.wrapper {
+    transition: max-height 400ms;
+    overflow: hidden;
+}

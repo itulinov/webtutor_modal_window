@@ -21,18 +21,12 @@
     flex: 1 1 auto;
 }
 
-.record > div:first-child {
+div.check_box {
     cursor: pointer;
-    flex: 0 0 4%;
+    flex: 0 0 1rem;
 }
 
 .record:hover {
-    color: #000;
-}
-.record > div:last-child {
-    color: #727a8d;
-}
-.record > div:last-child:hover {
     color: #000;
 }
 .record > div:nth-child(2) {
@@ -41,25 +35,26 @@
     overflow: hidden;
 }
 
-.wrapper {
-    transition: max-height 400ms;
-    overflow: hidden;
-}
-
-.record > div:last-child {
+div.drop_down {
+    color: #727a8d;
     cursor: pointer;
-    flex: 0 0 4%;
+    flex: 0 0 1rem;
 }
 
-.record > div:last-child svg {
+.drop_down:hover {
+    color: #000;
+    font-weight: 800;
+}
+
+.drop_down svg {
     border-left: 1px solid #e8e8ee;
     padding-left: .6rem;
 }
 
-.record > div:last-child:hover {
-    font-weight: 800;
+.wrapper {
+    transition: max-height 400ms;
+    overflow: hidden;
 }
-
 
 /*
 @media (max-width: 450px) {

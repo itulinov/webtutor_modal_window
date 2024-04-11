@@ -6,6 +6,10 @@
  * @retutn {function}
  */
 const add = (checked, select, unselect) => {
+    if (!select) {
+        return () => {}
+    }
+
     // если запись выбрана
     if (checked) {
         return () => {}
@@ -31,6 +35,10 @@ const add = (checked, select, unselect) => {
  */
 const remove = (checked, unselect) => {
     if (!checked) {
+        return () => {}
+    }
+
+    if (!unselect) {
         return () => {}
     }
 

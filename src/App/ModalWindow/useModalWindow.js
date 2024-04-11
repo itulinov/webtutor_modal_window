@@ -43,12 +43,16 @@ export default (params) => {
 
     // принудительный первый запрос
     useEffect(() => {
+        if (!show) {
+            return
+        }
+
         if (force !== true) {
             return
         }
 
         getRecords(null)
-    }, [force])
+    }, [force, show])
 
 
     // установить дефолтных записей
