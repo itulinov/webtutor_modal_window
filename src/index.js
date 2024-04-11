@@ -26,7 +26,7 @@ import LoadConfig from '@services/LoadConfig'
  * @return {string}
  */
 const getCurrentScriptContainerId = () => {
-    if (document.location.hostname == 'localhost') {
+    if (document.location.host == 'localhost:8001') {
         return 'app_root'
     }
 
@@ -57,7 +57,7 @@ if (
     app = (
         <LoadConfig
             settings={INITIAL_CONFIG}
-            renderContainerId={currentScriptContainerId}
+            renderContainerId={'app_root'}
         />
     )
 
