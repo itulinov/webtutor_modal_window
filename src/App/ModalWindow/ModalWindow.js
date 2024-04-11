@@ -8,6 +8,7 @@ import Action from "./Action"
 
 import useModalWindow from "./useModalWindow"
 import Classes from "./ModalWindow.module.css"
+import "./noScroll.css"
 
 
 function ModalWindow({params}) {
@@ -29,7 +30,9 @@ function ModalWindow({params}) {
     }] = useModalWindow(params)
 
 
+    document.body.style.overflow = "hidden" // запретить скролл
     if (!show) {
+        document.body.style.overflow = "auto" // разрешить скролл
         return null
     }
 
