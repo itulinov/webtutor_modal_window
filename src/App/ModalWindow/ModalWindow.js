@@ -8,7 +8,6 @@ import Action from "./Action"
 
 import useModalWindow from "./useModalWindow"
 import Classes from "./ModalWindow.module.css"
-import "./noScroll.css"
 
 
 function ModalWindow({params}) {
