@@ -6,7 +6,7 @@ export default (settings) => {
     const [portalParams] = usePortal()
     const isDev = () => {
         const url = new URL(window.location)
-        if (url.host.toString().toLowerCase().indexOf("localhost") > -1) {
+        if (url.href.toString().toLowerCase().indexOf("modal_window_dev") > -1) {
             return true
         }
 
