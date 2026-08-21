@@ -45,7 +45,6 @@ function getOverrideWebTemplateId(mode) {
  */
 function getObjectUrl() {
 	var path = 'x-local://wt/web/custom_projects/libs/url_lib.js';
-    DropFormsCache(path);
     var url_lib = OpenCodeLib(path);
 
     return url_lib.parseUrl(Request.Url);
