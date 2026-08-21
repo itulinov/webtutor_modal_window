@@ -532,7 +532,6 @@ function getSqlString(param) {
  */
 function execSql(ssql, connection_string, fields) {
     if (DataType(connection_string) == 'string' && connection_string != '') {
-        //var lib = getSqlLib()
         var lib = OpenCodeLib('x-local:wt/web/custom_projects/libs/sql_lib.js')
         return lib.optXExec(ssql, connection_string)
     }
@@ -540,19 +539,6 @@ function execSql(ssql, connection_string, fields) {
     return XQuery('sql: ' + ssql)
 }
 
-
-/**
- * Открыть библиотеку позволяющую подключаться к внешней бд
- * @return {XmElem}
- */
-function getSqlLib() {
-    var path = 'x-local://wt/web/_custom_web/_libs/sql_lib.js';
-    if (OpenCodeLib('x-local://wt/web/_custom_web/_libs/lib.js').getAppConfig('serverType') != 'PROD') {
-        DropFormsCache(path);
-    }
-
-    return OpenCodeLib(path);
-}
 
 /**
  * Проверить, разрешено ли выполнение eval
