@@ -11,6 +11,8 @@
     color: #727a8d;
     padding: .313rem .626rem;
     min-width: 8rem;
+    max-width: 100%;
+    box-sizing: border-box;
 }
 
 .action > button:hover {

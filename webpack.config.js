@@ -2,9 +2,6 @@ const path = require('node:path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const ReactRefreshWebpackPlugin = require('@pmmmwh/react-refresh-webpack-plugin');
 const webpack = require('webpack');
-const ModuleFederationPlugin = require(
-    "webpack/lib/container/ModuleFederationPlugin"
-)
 
 
 module.exports = {
@@ -67,12 +64,6 @@ module.exports = {
         }),
         new webpack.HotModuleReplacementPlugin(),
         new ReactRefreshWebpackPlugin(),
-        new ModuleFederationPlugin({
-            name: "mw",
-            remotes: {
-                mwLib: "mwLib@https://localhost:3003/remoteEntry.js",
-            }
-        }),
     ],
     externals: {
         Chart: 'Chart',

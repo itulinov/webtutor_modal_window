@@ -1,5 +1,6 @@
 import {useState, useEffect} from "react"
 import usePortal from "./usePortal"
+import { postData } from "@services/request"
 
 
 export default (settings) => {
@@ -14,13 +15,18 @@ export default (settings) => {
     }
 
     const getData = (param, fn = () => {}) => {
-        import ("@services/modal_window_lib.js").catch((err) => {
-            return import("webtutor_modal_window_lib")
-        }).then(({default: run}) => {
-            run(param).then((data) => {
-                fn(data)
-            })
-        })
+        const url = settings.url_to_api
+        const body = {
+            ...param,
+            action: "records",
+        }
+
+        const onError = (xhr) => {
+            fn({ success: false, error: xhr.statusText })
+        }
+
+        const request = postData(url, body)
+        request.then(fn, onError)
     }
 
 
