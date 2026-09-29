@@ -20,7 +20,7 @@ function addLog(value, name) {
 // Точка входа
 try {
     var PATH = "x-local://wt/web/custom_projects/modal_window/modal_window_lib.js"
-    var lib = OpenCodeLib(PATH).clear()
+    var lib = OpenCodeLib(PATH)
 
     var body = ParseJson(DecodeCharset(Request.Body, 'utf-8'))
     var action = body.GetOptProperty('action')
@@ -31,10 +31,9 @@ try {
                 sCatalog: body.GetOptProperty('catalog'),
                 sFields: body.GetOptProperty('fields'),
                 sFind: body.GetOptProperty('find'),
-                sValue: XQueryLiteral('%' + body.GetOptProperty('value') + '%'),
+                sValue: SqlLiteral( body.GetOptProperty('value') ),
                 sIds: body.GetOptProperty('ids'),
                 filter: body.GetOptProperty('where'),
-                ssql: body.GetOptProperty('ssql'),
                 connection: body.GetOptProperty('connection', ''),
                 collection: XQueryLiteral(body.GetOptProperty("collection")),
             }
