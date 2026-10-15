@@ -1,6 +1,7 @@
 import React, {useState, useEffect} from "react"
 import getRequestParams from "./lib/getRequestParams"
 import { MULTISELECT, START, HELP, VALUE_IS_LITTLE } from "./lib/consts"
+import { getPageSize, getVisibleRecords, isNeedMore } from "./helpers"
 
 
 export default (params) => {
@@ -13,16 +14,19 @@ export default (params) => {
     } = params
 
     const {force, multiselect} = param ? param : {}
+    const pageSize = getPageSize()
 
     const [style, setStyle] = useState({})
     const [info, setInfo] = useState(START)
     const [selected, setSelect] = useState({})
     const [records, setRecords] = useState(null)
     const [loading, setLoading] = useState(false)
+    const [visibleCount, setVisibleCount] = useState(pageSize.first)
 
     const closeModalWindow = () => {
         // очистить прошлый результат
         setRecords(null)
+        setVisibleCount(pageSize.first)
         setSelect({})
         setInfo(START)
 
@@ -131,10 +135,31 @@ export default (params) => {
             }
 
             setRecords(res.data)
+            setVisibleCount(pageSize.first)
             setLoading(false)
 
             setInfo(HELP)
         })
+    }
+
+    /**
+     * Добавить следующую порцию записей при прокрутке списка
+     * @param {object} event - событие scroll контейнера записей
+     */
+    const showMore = (event) => {
+        if (!Array.isArray(records)) {
+            return
+        }
+
+        if (visibleCount >= records.length) {
+            return
+        }
+
+        if (!isNeedMore(event.currentTarget, visibleCount)) {
+            return
+        }
+
+        setVisibleCount(visibleCount + pageSize.step)
     }
 
     /**
@@ -150,13 +175,14 @@ export default (params) => {
         param.callback(result)
     }
 
+    const visibleRecords = getVisibleRecords(records, visibleCount)
 
     return [{
         show,
         style,
         info,
         loading,
-        records,
+        records: visibleRecords,
         selected,
         fields: param ? param.fields : {},
     }, {
@@ -165,5 +191,6 @@ export default (params) => {
         callback,
         select: selectRecord,
         unselect: excludeRecord,
+        showMore,
     }]
 }

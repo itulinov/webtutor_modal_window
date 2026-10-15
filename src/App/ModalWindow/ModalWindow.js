@@ -26,6 +26,7 @@ function ModalWindow({params}) {
         callback,
         select,
         unselect,
+        showMore,
     }] = useModalWindow(params)
 
 
@@ -51,6 +52,7 @@ function ModalWindow({params}) {
                         selected={selected}
                         select={select}
                         unselect={unselect}
+                        onScroll={showMore}
                     />
                     <Records fields={fields}
                         records={selected}

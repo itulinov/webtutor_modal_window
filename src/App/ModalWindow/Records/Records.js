@@ -4,7 +4,15 @@ import DesktopRecords from "./DesktopRecords"
 import MobileRecords from "./MobileRecords"
 
 function Records(props) {
-    const {fields, records, selected, select, unselect, rows} = props
+    const {
+        fields,
+        records,
+        selected,
+        select,
+        unselect,
+        rows,
+        onScroll,
+    } = props
     const [size] = useResize()
 
     if (size <= 720) {
@@ -15,6 +23,7 @@ function Records(props) {
                 select={select}
                 unselect={unselect}
                 rows={rows}
+                onScroll={onScroll}
             />
         )
     }
@@ -26,6 +35,7 @@ function Records(props) {
             select={select}
             unselect={unselect}
             rows={rows}
+            onScroll={onScroll}
         />
     )
 }

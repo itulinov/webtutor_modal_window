@@ -3,7 +3,15 @@ import DesktopRecord from "./DesktopRecord"
 import Classes from "./DesktopRecords.module.css"
 
 export default (props) => {
-    const {fields, records, selected, select, unselect, rows=7} = props
+    const {
+        fields,
+        records,
+        selected,
+        select,
+        unselect,
+        rows=7,
+        onScroll,
+    } = props
     const styleForHeader = {cursor: 'default'}
     const styleRows = {height: (rows * 2.43).toString() + 'rem'}
 
@@ -17,7 +25,10 @@ export default (props) => {
             <div className={Classes.header}>
                 <DesktopRecord fields={fields} style={styleForHeader}/>
             </div>
-            <div className={Classes.records} style={styleRows}>
+            <div className={Classes.records}
+                style={styleRows}
+                onScroll={onScroll}
+            >
                 {data && data.map((record, i) => {
                     return (
                         <DesktopRecord key={record.id}

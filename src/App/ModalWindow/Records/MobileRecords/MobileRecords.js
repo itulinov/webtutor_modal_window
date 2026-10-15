@@ -3,7 +3,15 @@ import MobileRecord from "./MobileRecord"
 import Classes from "./MobileRecords.module.css"
 
 function MobileRecords(props) {
-    const {fields, records, selected, select, unselect, rows=7} = props
+    const {
+        fields,
+        records,
+        selected,
+        select,
+        unselect,
+        rows=7,
+        onScroll,
+    } = props
     const styleRows = {height: (rows * 2.43).toString() + 'rem'}
 
     let data = records
@@ -13,7 +21,10 @@ function MobileRecords(props) {
 
     return (
         <div className={Classes.mobile_records}>
-            <div style={styleRows} className={Classes.records} >
+            <div style={styleRows}
+                className={Classes.records}
+                onScroll={onScroll}
+            >
                 {data && data.map((record) => {
                     return (
                         <MobileRecord key={record.id}
